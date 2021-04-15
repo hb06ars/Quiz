@@ -77,6 +77,7 @@ public class ControleController {
 	public static String periodoAtual = "";
 	public static String hoje = "";
 	public static String itemMenuSelecionado = "home";
+	public static List<Integer> questoesJogadas = new ArrayList<Integer>();
 	
 	// ----------------------------------------------------------------------------------------
 	//Perguntas iniciais
@@ -685,6 +686,16 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 			Integer total = p.size();
 			Random random = new Random();
 			int aleatorio = random.nextInt(total);
+			if(questoesJogadas.size() > 0) {
+				while(questoesJogadas.contains(aleatorio) && total > questoesJogadas.size()) {
+					aleatorio = random.nextInt(total);
+				}
+			}
+			questoesJogadas.add(aleatorio);
+			if(total <= questoesJogadas.size()) {
+				questoesJogadas.clear();
+			}
+			
 			QuestaoJogo questaoJogo = new QuestaoJogo();
 			for(int i = 0; i < total; i++) {
 				if(i == aleatorio) {
