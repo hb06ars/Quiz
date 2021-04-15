@@ -36,4 +36,14 @@ function mensagemErro(titulo, corpo){
 	$(this).remove();
 	}, 2000);
 }
+function mensagemProduto(titulo, corpo){
+	document.getElementById("alerta").style.display = "block";
+	document.getElementById("tituloMsg").innerHTML = titulo;
+	document.getElementById("corpoMsg").innerHTML = corpo;
+	$("#alerta").fadeIn(0);
+	setTimeout(function() {
+	$('#alerta').fadeOut(300, function(){});
+	$(this).remove();
+	}, 300);
+}
 </script>

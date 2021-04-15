@@ -36,7 +36,33 @@
 }
 </style>
 
+<script>
+var repeticoes = 0;
 
+function vermelho(valor){
+	document.getElementById(valor).style.color = "red";
+}
+function normal(valor){
+	document.getElementById(valor).style.color = "black";
+}
+
+function escolher(alternativa){
+	repeticoes = repeticoes+1;
+	if(repeticoes <= 1){
+		var resposta = document.getElementById(alternativa).innerHTML;
+		resposta = resposta.replace("A) ","").replace("B) ","").replace("C) ","").replace("D) ","").replace("E) ","").substr(1);
+		var questao = document.getElementById("questao").innerHTML;
+		document.getElementById("questaoSubmit").value = questao;
+		document.getElementById("respostaSubmit").value = resposta;
+		document.getElementById("formJogar").submit();	
+	}
+}
+
+
+
+
+
+</script>
 
 <!-- INICIANDO PÁGINA -->
 <div class="main-container">
@@ -50,24 +76,31 @@
 <div id="mesa" class="container" style="display:block">
     <div class="row">
         <div class="col text-center">
-            <h5 class="subtitle">QUIZ</h5>
-            <p class="text-secondary">Perguntas e Respostas</p>
+            <p class="subtitle"><b>
+            Pontuação atual: ${usuarioSessao.pontuacao } pontos <br> 
+            Tentativas: ${usuarioSessao.tentativas } de 5</b>
+            </p>
         </div>
     </div>
-    <div class="row text-center mt-3">
-	        <div class="col-12 col-md-12" style="cursor:pointer;" >
-	            <div class="card border-0 mb-4">
-	                <div class="card-body">
-	                    <div class="avatar avatar-60 bg-default-light rounded-circle text-default">
-	                        <img src="/img/trofeu.jpg" alt="" class="w-100">
-	                    </div>
-	                    <p class="mt-3 mb-0 font-weight-normal" ><b>POSIÇÃO:  ${usuarioSessao.colocacao}º LUGAR </b></p>
-	                    <p class="mt-3 mb-0 font-weight-normal" style="color:white">Ocupada</p>
-	                    <p class="text-dark medium"><b>SEU RECORDE: ${usuarioSessao.recorde}</b></p>
-	                </div>
-	            </div>
-	        </div>
-    </div>
+    <form action="/jogar" id="formJogar" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
+	    <div class="row text-center mt-3">
+			<div class="col-12 col-md-12" style="cursor:pointer;" >
+		        <div class="card border-0 mb-4">
+		        	<div class="card-body">
+		            	<p class="text-left" id="questao" >${perg}</p>
+		                <p>&nbsp</p>
+		                <p class="text-left" id="alt1" onmouseup="escolher('alt1')" onmouseover="vermelho('alt1')" onmouseout="normal('alt1')"> A) ${alt1}</p>
+		                <p class="text-left" id="alt2" onmouseup="escolher('alt2')" onmouseover="vermelho('alt2')" onmouseout="normal('alt2')"> B) ${alt2}</p>
+		                <p class="text-left" id="alt3" onmouseup="escolher('alt3')" onmouseover="vermelho('alt3')" onmouseout="normal('alt3')"> C) ${alt3}</p>
+		                <p class="text-left" id="alt4" onmouseup="escolher('alt4')" onmouseover="vermelho('alt4')" onmouseout="normal('alt4')"> D) ${alt4}</p>
+		                <p class="text-left" id="alt5" onmouseup="escolher('alt5')" onmouseover="vermelho('alt5')" onmouseout="normal('alt5')"> E) ${alt5}</p>
+		            </div>
+		    	</div>
+		    </div>
+	    </div>
+	    <input type=hidden id="questaoSubmit" name="questaoSubmit" value="" />
+	    <input type=hidden id="respostaSubmit" name="respostaSubmit" value="" />
+	</form>
 </div>
 <!-- SELECIONANDO A MESAS --->	
 

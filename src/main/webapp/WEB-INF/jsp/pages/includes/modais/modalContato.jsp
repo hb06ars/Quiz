@@ -27,10 +27,6 @@ function modalContato(){
         São Paulo - SP <br>
         Contato: (11)00000-0000 <br>
         Email: teste@teste.com <br><br>
-        Funcionamento: <br>
-        seg à sex - 08hs às 20hs <br>
-        sáb - 09hs às 17hs <br>
-        dom e feriados - 10hs às 14hs
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
