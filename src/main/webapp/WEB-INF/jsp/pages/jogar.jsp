@@ -32,10 +32,14 @@
 var repeticoes = 0;
 
 function vermelho(valor){
-	document.getElementById(valor).style.color = "red";
+	document.getElementById(valor).style.color = "white";
+	document.getElementById(valor).style.background = "#084B8A";
+	document.getElementById(valor).style.borderColor = "#084B8A";
 }
 function normal(valor){
 	document.getElementById(valor).style.color = "black";
+	document.getElementById(valor).style.background = "#E6E6E6";
+	document.getElementById(valor).style.borderColor = "#E6E6E6";
 }
 
 function escolher(alternativa){
