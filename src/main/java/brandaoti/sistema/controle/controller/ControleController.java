@@ -1001,7 +1001,7 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 				
 			}
 			else if (alterar) {
-				if(usuarioDao.buscaLogin(usuario.getLogin()).size() == 0) {
+				if(usuarioDao.buscaLogin(usuario.getLogin()).size() > 0) {
 					Usuario u = usuarioDao.findById(usuarioID).get();
 					if(u != null) {
 						u.setAtivo(true);

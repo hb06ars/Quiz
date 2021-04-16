@@ -75,7 +75,7 @@ function redirect(link){
     </div>
 
 
-<form action="/criar" id="criarUsuario" method="post" autocomplete="off">
+<form action="/criar" id="criarUsuario" method="post" autocomplete="off" enctype="multipart/form-data" accept-charset="UTF-8">
     <!-- Begin page content -->
     <main class="flex-shrink-0 main has-footer">
         <!-- Fixed navbar -->
