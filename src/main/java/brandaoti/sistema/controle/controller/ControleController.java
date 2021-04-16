@@ -689,6 +689,12 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 			if(questoesJogadas.size() > 0) {
 				while(questoesJogadas.contains(aleatorio) && total > questoesJogadas.size()) {
 					aleatorio = random.nextInt(total);
+					if(questoesJogadas.contains(aleatorio)) {
+						aleatorio++;
+					}
+					if(aleatorio >= total) {
+						aleatorio = 0;
+					}
 				}
 			}
 			questoesJogadas.add(aleatorio);
