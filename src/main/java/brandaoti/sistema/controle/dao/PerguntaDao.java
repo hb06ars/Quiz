@@ -16,6 +16,6 @@ public interface PerguntaDao extends JpaRepository<Pergunta, Integer> {
 	@Query(" select v from Pergunta v where v.ativo = 1 and upper( v.codigo ) like upper( :codigo ) order by v.id asc ")
 	Pergunta porCodigo(@Param("codigo") String codigo);
 	
-	@Query("select v from Pergunta v where v.ativo = 1 and upper( v.questao) like upper( :questao ) and upper( v.correta ) like upper( :resposta )")
-	List<Pergunta> analisar(@Param("questao") String questao, @Param("resposta") String resposta);
+	@Query("select v from Pergunta v where v.ativo = 1 and v.id = :idQuestao and upper( v.questao) like upper( :questao ) and upper( v.correta ) like upper( :resposta )")
+	List<Pergunta> analisar(@Param("questao") String questao, @Param("resposta") String resposta, @Param("idQuestao") Integer idQuestao);
 }

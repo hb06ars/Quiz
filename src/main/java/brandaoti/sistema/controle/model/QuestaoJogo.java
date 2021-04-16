@@ -10,6 +10,8 @@ import javax.persistence.OneToOne;
 
 public class QuestaoJogo {
 	
+	private Integer idquestao;
+	
 	private String questao;
 	
 	private String resposta1;
@@ -68,6 +70,14 @@ public class QuestaoJogo {
 
 	public void setResposta5(String resposta5) {
 		this.resposta5 = resposta5;
+	}
+
+	public Integer getIdquestao() {
+		return idquestao;
+	}
+
+	public void setIdquestao(Integer idquestao) {
+		this.idquestao = idquestao;
 	}
 	
 	

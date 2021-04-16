@@ -544,15 +544,15 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 	
 	
 	@RequestMapping(value = "/jogar", method = {RequestMethod.POST,RequestMethod.GET}) // Link do submit do form e o method POST que botou la
-	public ModelAndView jogar(Model model, String questaoSubmit, String respostaSubmit) { // model é usado para mandar , e variavelNome está recebendo o name="nome" do submit feito na pagina principal 
+	public ModelAndView jogar(Model model, String questaoSubmit, String respostaSubmit, Integer idQuestao) { // model é usado para mandar , e variavelNome está recebendo o name="nome" do submit feito na pagina principal 
 		if(usuarioSessao != null) {
 			
 			colocacao();
 			
-			if( questaoSubmit != null && respostaSubmit != null ) {
+			if( questaoSubmit != null && respostaSubmit != null && idQuestao != null ) {
 				String questao = questaoSubmit;
 				String resposta = respostaSubmit;
-				List<Pergunta> p = perguntaDao.analisar(questao,resposta);
+				List<Pergunta> p = perguntaDao.analisar(questao,resposta,idQuestao);
 				if(p.size() == 0) {
 					//Errou
 					Integer conta = usuarioSessao.getTentativas() + 1;
@@ -605,6 +605,7 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 			for(int i = 0; i < total; i++) {
 				if(i == aleatorio) {
 					questaoJogo.setQuestao(p.get(i).getQuestao());
+					questaoJogo.setIdquestao(p.get(i).getId());
 					//Gerando aleatório:
 					List<Integer> numerosAleatorios = gerarAleatorios();
 			        for(int j = 0; j < 5; j++) {
@@ -708,6 +709,7 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 				}
 			}
 			model.addAttribute("perg", questaoJogo.getQuestao());
+			model.addAttribute("idQuestao", questaoJogo.getIdquestao());
 			model.addAttribute("alt1", questaoJogo.getResposta1());
 			model.addAttribute("alt2", questaoJogo.getResposta2());
 			model.addAttribute("alt3", questaoJogo.getResposta3());
