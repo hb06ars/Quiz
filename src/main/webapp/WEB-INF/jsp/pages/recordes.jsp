@@ -48,10 +48,20 @@
 						<c:set var = "pos" value = "0"/>
 						<c:forEach items="${usuarios}" var="u">
 							<c:set var = "pos" value = "${pos + 1}"/>
-							<td>${pos }
+							<td style="align-items: center;display: flex;flex-direction: row;flex-wrap: wrap;justify-content: left;">
+								<c:if test="${pos == 1}" >
+									<i style="color:orange;" class="material-icons">emoji_events</i>&nbsp
+								</c:if>
+								<c:if test="${pos == 2}" >
+									<i style="color:gray;" class="material-icons">emoji_events</i>&nbsp
+								</c:if>
+								<c:if test="${pos == 3}" >
+									<i style="color:brown;" class="material-icons">emoji_events</i>&nbsp
+								</c:if>
+								${pos }º Lugar
 							<td>${u.nome}
 							<td>${u.perfil.nome}
-							<td>${u.recorde}
+							<td>${u.recorde} pontos
 							<tr>	
 						</c:forEach>
 					</tbody>

@@ -77,8 +77,8 @@ function escolher(alternativa){
     <div class="row">
         <div class="col text-center">
             <p class="subtitle"><b>
-            Pontuação atual: ${usuarioSessao.pontuacao } pontos <br> 
-            Tentativas: ${usuarioSessao.tentativas } de 5</b>
+            PONTUAÇÃO ATUAL: ${usuarioSessao.pontuacao } PONTOS <br> 
+            TENTATIVAS: ${usuarioSessao.tentativas } DE 5</b>
             </p>
         </div>
     </div>
@@ -87,13 +87,13 @@ function escolher(alternativa){
 			<div class="col-12 col-md-12" style="cursor:pointer;" >
 		        <div class="card border-0 mb-4">
 		        	<div class="card-body">
-		            	<p class="text-left" id="questao" >${perg}</p>
+		            	<h6 class="text-left" id="questao" >${perg}</h6>
 		                <p>&nbsp</p>
-		                <p class="text-left" id="alt1" onmouseup="escolher('alt1')" onmouseover="vermelho('alt1')" onmouseout="normal('alt1')"> A) ${alt1}</p>
-		                <p class="text-left" id="alt2" onmouseup="escolher('alt2')" onmouseover="vermelho('alt2')" onmouseout="normal('alt2')"> B) ${alt2}</p>
-		                <p class="text-left" id="alt3" onmouseup="escolher('alt3')" onmouseover="vermelho('alt3')" onmouseout="normal('alt3')"> C) ${alt3}</p>
-		                <p class="text-left" id="alt4" onmouseup="escolher('alt4')" onmouseover="vermelho('alt4')" onmouseout="normal('alt4')"> D) ${alt4}</p>
-		                <p class="text-left" id="alt5" onmouseup="escolher('alt5')" onmouseover="vermelho('alt5')" onmouseout="normal('alt5')"> E) ${alt5}</p>
+		                <p style="border: 12px solid #E6E6E6; border-radius: 10px;background-color:#E6E6E6" class="text-left" id="alt1" onmouseup="escolher('alt1')" onmouseover="vermelho('alt1')" onmouseout="normal('alt1')"> A) ${alt1}</p>
+		                <p style="border: 12px solid #E6E6E6; border-radius: 10px;background-color:#E6E6E6" class="text-left" id="alt2" onmouseup="escolher('alt2')" onmouseover="vermelho('alt2')" onmouseout="normal('alt2')"> B) ${alt2}</p>
+		                <p style="border: 12px solid #E6E6E6; border-radius: 10px;background-color:#E6E6E6" class="text-left" id="alt3" onmouseup="escolher('alt3')" onmouseover="vermelho('alt3')" onmouseout="normal('alt3')"> C) ${alt3}</p>
+		                <p style="border: 12px solid #E6E6E6; border-radius: 10px;background-color:#E6E6E6" class="text-left" id="alt4" onmouseup="escolher('alt4')" onmouseover="vermelho('alt4')" onmouseout="normal('alt4')"> D) ${alt4}</p>
+		                <p style="border: 12px solid #E6E6E6; border-radius: 10px;background-color:#E6E6E6" class="text-left" id="alt5" onmouseup="escolher('alt5')" onmouseover="vermelho('alt5')" onmouseout="normal('alt5')"> E) ${alt5}</p>
 		            </div>
 		    	</div>
 		    </div>
