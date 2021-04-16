@@ -82,118 +82,20 @@ public class ControleController {
 	// ----------------------------------------------------------------------------------------
 	//Perguntas iniciais
 	public void iniciar() {
-
-		Pergunta p = new Pergunta();
-		p.setAtivo(true);
-		p.setCodigo("00001");
-		p.setQuestao("Qual a cor do cavalo branco de Napoleão?");
-		p.setCorreta("Branco");
-		p.setResposta1("Azul");
-		p.setResposta2("Vermelho");
-		p.setResposta3("Verde");
-		p.setResposta4("Marrom");
-		perguntaDao.save(p);
-		// ----------------------------------------------------------------------------------------
-		p = new Pergunta();
-		p.setAtivo(true);
-		p.setCodigo("00002");
-		p.setQuestao("Quanto é: 2 + 2?");
-		p.setCorreta("4");
-		p.setResposta1("22");
-		p.setResposta2("2");
-		p.setResposta3("6");
-		p.setResposta4("0");
-		perguntaDao.save(p);
-		// ----------------------------------------------------------------------------------------
-		p = new Pergunta();
-		p.setAtivo(true);
-		p.setCodigo("00003");
-		p.setQuestao("Quem descobriu o Brasil?");
-		p.setCorreta("Pedro Álvares Cabral");
-		p.setResposta1("Pedro de Lara");
-		p.setResposta2("Dom Pedro I");
-		p.setResposta3("Dom Pedro II");
-		p.setResposta4("N.D.A.");
-		perguntaDao.save(p);
-		// ----------------------------------------------------------------------------------------
-		p = new Pergunta();
-		p.setAtivo(true);
-		p.setCodigo("00004");
-		p.setQuestao("Em que dia da semana Pelé, fez seu milésimo gol?");
-		p.setCorreta("Quinta");
-		p.setResposta1("Sábado");
-		p.setResposta2("Quarta");
-		p.setResposta3("Domingo");
-		p.setResposta4("Segunda");
-		perguntaDao.save(p);
-		// ----------------------------------------------------------------------------------------
-		p = new Pergunta();
-		p.setAtivo(true);
-		p.setCodigo("00005");
-		p.setQuestao("Qual é a raiz quadrada de 144?");
-		p.setCorreta("12");
-		p.setResposta1("14");
-		p.setResposta2("140");
-		p.setResposta3("10");
-		p.setResposta4("288");
-		perguntaDao.save(p);
-		// ----------------------------------------------------------------------------------------
-		p = new Pergunta();
-		p.setAtivo(true);
-		p.setCodigo("00006");
-		p.setQuestao("Como se escreve maçã em inglês?");
-		p.setCorreta("apple");
-		p.setResposta1("orange");
-		p.setResposta2("maçã");
-		p.setResposta3("pineapple");
-		p.setResposta4("red");
-		perguntaDao.save(p);
-		// ----------------------------------------------------------------------------------------
-		p = new Pergunta();
-		p.setAtivo(true);
-		p.setCodigo("00007");
-		p.setQuestao("Quanto é: 23 + 2?");
-		p.setCorreta("25");
-		p.setResposta1("22");
-		p.setResposta2("23");
-		p.setResposta3("24");
-		p.setResposta4("20");
-		perguntaDao.save(p);
-		// ----------------------------------------------------------------------------------------
-		p = new Pergunta();
-		p.setAtivo(true);
-		p.setCodigo("00008");
-		p.setQuestao("Qual a capital da Colômbia?");
-		p.setCorreta("Bogotá");
-		p.setResposta1("Santiago");
-		p.setResposta2("Assunção");
-		p.setResposta3("Colômbia");
-		p.setResposta4("Buenos Aires");
-		perguntaDao.save(p);
-		// ----------------------------------------------------------------------------------------
-		p = new Pergunta();
-		p.setAtivo(true);
-		p.setCodigo("00009");
-		p.setQuestao("Quanto é: 10 + 2 X 4 - 8?");
-		p.setCorreta("10");
-		p.setResposta1("40");
-		p.setResposta2("16");
-		p.setResposta3("20");
-		p.setResposta4("26");
-		perguntaDao.save(p);
-		// ----------------------------------------------------------------------------------------
-		p = new Pergunta();
-		p.setAtivo(true);
-		p.setCodigo("00010");
-		p.setQuestao("Qual está correto?");
-		p.setCorreta("surdina");
-		p.setResposta1("sudina");
-		p.setResposta2("surdimha");
-		p.setResposta3("Aqui tem menas mulheres.");
-		p.setResposta4("Mau súbito");
-		perguntaDao.save(p);
-		// ----------------------------------------------------------------------------------------
-		
+		PerguntasInicio pi = new PerguntasInicio();
+		List<Pergunta> pergunta_temp = pi.iniciarPerguntas();
+		for(Pergunta ptemp : pergunta_temp) {
+			Pergunta p = new Pergunta();
+			p.setAtivo(true);
+			p.setCodigo(ptemp.getCodigo());
+			p.setQuestao(ptemp.getQuestao());
+			p.setCorreta(ptemp.getCorreta());
+			p.setResposta1(ptemp.getResposta1());
+			p.setResposta2(ptemp.getResposta2());
+			p.setResposta3(ptemp.getResposta3());
+			p.setResposta4(ptemp.getResposta4());
+			perguntaDao.save(p);
+		}
 	}
 	//Perguntas iniciais ----------------------------------------------------------------------------------------
 	
@@ -351,7 +253,6 @@ public class ControleController {
 			try {
 				iniciar();
 			} catch (Exception e) {
-				System.out.println("Erro Planilha inicial: "+e);
 			}
 			
 		}
@@ -655,7 +556,6 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 				if(p.size() == 0) {
 					//Errou
 					Integer conta = usuarioSessao.getTentativas() + 1;
-					System.out.println("Tentativas de: "+usuarioSessao.getTentativas()+" para: "+conta);
 					usuarioSessao.setTentativas(conta);
 					usuarioDao.save(usuarioSessao);
 					if(usuarioSessao.getTentativas() > 4) {
@@ -669,7 +569,6 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 				} else {
 					//Acertou
 					Integer conta = usuarioSessao.getPontuacao() + 1;
-					System.out.println("Pontuação de: "+usuarioSessao.getPontuacao()+" para: "+conta);
 					usuarioSessao.setPontuacao(conta);
 					usuarioDao.save(usuarioSessao);
 					if(usuarioSessao.getPontuacao() > usuarioSessao.getRecorde()) {
@@ -951,10 +850,6 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 	
 	@RequestMapping(value = "/atualizarPergunta", method = {RequestMethod.POST,RequestMethod.GET}) // Link do submit do form e o method POST que botou la
 	public ModelAndView atualizarPergunta(Model model, Integer perguntaID, Boolean alterar, Boolean salvar, Boolean pesquisar, Pergunta pergunta ) { // model é usado para mandar , e variavelNome está recebendo o name="nome" do submit feito na pagina principal 
-		System.out.println("alterar: "+alterar);
-		System.out.println("salvar:"+salvar);
-		System.out.println("pesquisar:"+pesquisar);
-		System.out.println("perguntaID:"+perguntaID);
 		if(usuarioSessao != null) {
 			if(pesquisar) {
 				Pergunta p = perguntaDao.porCodigo(pergunta.getCodigo());
@@ -984,7 +879,6 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 				registraMsg("Pergunta", "Alterada com sucesso.", "info");
 			}
 			else if (alterar) {
-				System.out.println("alterar "+perguntaID);
 				Pergunta p = perguntaDao.findById(perguntaID).get();
 				if(p != null) {
 					p.setAtivo(true);
@@ -1165,7 +1059,6 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 			finalLinha++;
 		}
 		} catch(Exception e) {
-			System.out.println("Erro: "+e);
 			registraMsg("Upload", "Erro: " + e, "erro");
 		}
 	}
@@ -1198,7 +1091,6 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 			finalLinha++;
 		}
 		} catch(Exception e) {
-			System.out.println("Erro: "+e);
 			registraMsg("Upload", "Erro: " + e, "erro");
 		}
 	}
