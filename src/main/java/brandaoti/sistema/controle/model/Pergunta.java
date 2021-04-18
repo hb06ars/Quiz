@@ -18,22 +18,22 @@ public class Pergunta {
 	@Column
 	private String codigo;
 	
-	@Column
+	@Column(columnDefinition = "NVARCHAR(MAX)")
 	private String questao;
 	
-	@Column
+	@Column(columnDefinition = "NVARCHAR(MAX)")
 	private String resposta1;
 	
-	@Column
+	@Column(columnDefinition = "NVARCHAR(MAX)")
 	private String resposta2;
 	
-	@Column
+	@Column(columnDefinition = "NVARCHAR(MAX)")
 	private String resposta3;
 	
-	@Column
+	@Column(columnDefinition = "NVARCHAR(MAX)")
 	private String resposta4;
 	
-	@Column
+	@Column(columnDefinition = "NVARCHAR(MAX)")
 	private String correta;
 	
 	@Column

@@ -95,6 +95,7 @@ public class ControleController {
 			p.setResposta3(ptemp.getResposta3());
 			p.setResposta4(ptemp.getResposta4());
 			perguntaDao.save(p);
+			System.out.println("SALVO");
 		}
 	}
 	//Perguntas iniciais ----------------------------------------------------------------------------------------
