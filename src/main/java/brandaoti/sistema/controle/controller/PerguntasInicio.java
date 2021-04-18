@@ -16,7 +16,7 @@ public class PerguntasInicio {
 		p = new Pergunta();
 		p.setAtivo(true);
 		p.setCodigo("00001");
-		p.setQuestao("'O esquema funcionava através da superfaturação de obras que faziam parte de um programa que tinha como objetivo acelerar o crescimento econômico no País”. Essa descrição corresponde a uma operação criminosa no Brasil. Trata-se da:");
+		p.setQuestao("''O esquema funcionava através da superfaturação de obras que faziam parte de um programa que tinha como objetivo acelerar o crescimento econômico no País''. Essa descrição corresponde a uma operação criminosa no Brasil. Trata-se da:");
 		p.setCorreta("Operação Navalha");
 		p.setResposta1("Operação Lava Jato");
 		p.setResposta2("Operação Greenfield");
@@ -35,6 +35,7 @@ public class PerguntasInicio {
 		p.setResposta4("Ano 1952, na Floresta Amazônica");
 		todasPerguntas.add(p);
 		// QUESTÃO ---------------------------------------------------------------------------------
+		
 		p = new Pergunta();
 		p.setAtivo(true);
 		p.setCodigo("00001");
@@ -50,7 +51,7 @@ public class PerguntasInicio {
 		p.setAtivo(true);
 		p.setCodigo("00001");
 		p.setQuestao("Qual das alternativas apresenta os Presidentes do Brasil em ordem de sucessão?");
-		p.setCorreta("Dilma Rousseff, Miguel Temer, Jair Bolsonaro");
+		p.setCorreta("Dilma Rousseff, Michel Temer, Jair Bolsonaro");
 		p.setResposta1("Dilma Rousseff, Lula, Jair Bolsonaro");
 		p.setResposta2("Fernando Henrique, Itamar Franco, Lula");
 		p.setResposta3("Itamar Franco, Collor, Lula");
@@ -75,7 +76,7 @@ public class PerguntasInicio {
 		p.setCorreta("CoronaVac e AstraZeneca");
 		p.setResposta1("VIP/VOP e AstraZeneca");
 		p.setResposta2("HPV e BioNTech");
-		p.setResposta3("Pentavalente (DTPp.setResposta1('e Sputnik V'");
+		p.setResposta3("Pentavalente (DTPp.setResposta1(''e Sputnik V''");
 		p.setResposta4("Rotavírus e CoronaVac");
 		todasPerguntas.add(p);
 		// QUESTÃO ---------------------------------------------------------------------------------
@@ -227,10 +228,10 @@ public class PerguntasInicio {
 		p.setCodigo("00001");
 		p.setQuestao("O que é o Amazonia 1?");
 		p.setCorreta("Primeiro satélite totalmente desenvolvido pelo Brasil para monitorar a Amazônia e outros biomas brasileiros, que foi lançado no dia 28 de fevereiro de 2021 do Centro de Lançamento Satish Dhawan Space Centre, na Índia.");
-		p.setResposta1("Primeiro satélite totalmente desenvolvido pelo Brasil para monitorar a Amazônia e outros biomas brasileiros, que foi lançado no dia 28 de fevereiro de 2021 do Centro de Lançamento de Alcântara (CLp.setResposta1('a'), no Brasil.");
+		p.setResposta1("Primeiro satélite totalmente desenvolvido pelo Brasil para monitorar a Amazônia e outros biomas brasileiros, que foi lançado no dia 28 de fevereiro de 2021 do Centro de Lançamento de Alcântara (CLERRADA  - a), no Brasil.");
 		p.setResposta2("Primeiro satélite brasileiro de coleta de dados, que foi lançado no dia 9 de fevereiro de 1993 do Centro de Controle de Wallops, nos Estados Unidos.");
 		p.setResposta3("Plano do governo brasileiro que tem como objetivo o desenvolvimento sustentável na Amazônia.");
-		p.setResposta4("Fundo de projetos sustentáveis na Amazônia, criado pelo Banco Interamericano de Desenvolvimento (BIp.setResposta1('d').");
+		p.setResposta4("Fundo de projetos sustentáveis na Amazônia, criado pelo Banco Interamericano de Desenvolvimento (BIERRADA - d).");
 		todasPerguntas.add(p);
 		// QUESTÃO ---------------------------------------------------------------------------------
 		p = new Pergunta();
@@ -270,11 +271,11 @@ public class PerguntasInicio {
 		p.setAtivo(true);
 		p.setCodigo("00001");
 		p.setQuestao("Qual destas frases foi dita pelo Papa Francisco?");
-		p.setCorreta("'Não existe mãe solteira. Mãe não é um estado civil.'");
-		p.setResposta1("'Se Deus é brasileiro, o Papa é carioca.'");
-		p.setResposta2("'Brasil acima de tudo, Deus acima de todos.'");
-		p.setResposta3("'Ter fé é assinar uma folha em branco e deixar que Deus nela escreva o que quiser.'");
-		p.setResposta4("'Prefiro ser um homem de paradoxos que um homem de preconceitos.'");
+		p.setCorreta("''Não existe mãe solteira. Mãe não é um estado civil.''");
+		p.setResposta1("''Se Deus é brasileiro, o Papa é carioca.''");
+		p.setResposta2("''Brasil acima de tudo, Deus acima de todos.''");
+		p.setResposta3("''Ter fé é assinar uma folha em branco e deixar que Deus nela escreva o que quiser.''");
+		p.setResposta4("''Prefiro ser um homem de paradoxos que um homem de preconceitos.''");
 		todasPerguntas.add(p);
 		// QUESTÃO ---------------------------------------------------------------------------------
 		p = new Pergunta();
@@ -437,7 +438,7 @@ public class PerguntasInicio {
 		p.setQuestao("Que decisão de Donald Trump alarmou a comunidade internacional em dezembro de 2017?");
 		p.setCorreta("Reconhecimento de Jerusalém como capital de Israel");
 		p.setResposta1("Retificação da decisão sobre a importação de troféus de caça");
-		p.setResposta2("Decreto contra a lei de saúde 'Obamacare'");
+		p.setResposta2("Decreto contra a lei de saúde ''Obamacare''");
 		p.setResposta3("Construção de muro na fronteira entre Estados Unidos e México");
 		p.setResposta4("Construção de oleodutos");
 		todasPerguntas.add(p);
@@ -511,7 +512,7 @@ public class PerguntasInicio {
 		p = new Pergunta();
 		p.setAtivo(true);
 		p.setCodigo("00001");
-		p.setQuestao("Quem é o autor do famoso discurso 'Eu tenho um sonho'?");
+		p.setQuestao("Quem é o autor do famoso discurso ''Eu tenho um sonho''?");
 		p.setCorreta("Martin Luther King");
 		p.setResposta1("Nelson Mandela");
 		p.setResposta2("Zumbi dos Palmares");
@@ -599,7 +600,7 @@ public class PerguntasInicio {
 		p = new Pergunta();
 		p.setAtivo(true);
 		p.setCodigo("00001");
-		p.setQuestao("Quem são os autores das seguintes frases?\n'Se queres prever o futuro, estuda o passado.'\n'Cada segundo é tempo para mudar tudo para sempre.'");
+		p.setQuestao("Quem são os autores das seguintes frases?\n''Se queres prever o futuro, estuda o passado.''\n''Cada segundo é tempo para mudar tudo para sempre.''");
 		p.setCorreta("Confúcio e Charles Chaplin");
 		p.setResposta1("Augusto Cury e João Paulo II");
 		p.setResposta2("Albert Camus e Albert Einstein");
@@ -651,6 +652,7 @@ public class PerguntasInicio {
 		p.setResposta4("Estrelas além do tempo, de Theodore Melfi (2016) e Pantera negra, de Ryan Coogler (2018)");
 		todasPerguntas.add(p);
 		// QUESTÃO ---------------------------------------------------------------------------------
+		
 
 		
 		
