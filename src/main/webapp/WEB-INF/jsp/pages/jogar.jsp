@@ -29,6 +29,15 @@
 </style>
 
 <script>
+
+function desabilitaF5(e) { 
+	  if ((e.which || e.keyCode) == 116) 
+	    e.preventDefault(); 
+	};
+	$(document).on("keydown", desabilitaF5); // com jQuery
+	//document.addEventListener("keydown", desabilitaF5); // com JavaScript
+
+
 var repeticoes = 0;
 
 function vermelho(valor){

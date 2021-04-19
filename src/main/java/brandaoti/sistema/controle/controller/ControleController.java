@@ -78,6 +78,7 @@ public class ControleController {
 	public static String hoje = "";
 	public static String itemMenuSelecionado = "home";
 	public static List<Integer> questoesJogadas = new ArrayList<Integer>();
+	public static Integer questaoAnterior = 0;
 	
 	// ----------------------------------------------------------------------------------------
 	//Perguntas iniciais
@@ -520,6 +521,9 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 		Usuario usu = usuarioDao.fazerLogin(variavelUsuario, variavelSenha);
 		if(usu != null)
 			usuarioSessao = usu;
+			usuarioSessao.setPontuacao(0);
+			usuarioSessao.setTentativas(0);
+			usuarioDao.save(usuarioSessao);
 		if(usu != null || usuarioSessao != null) {
 			colocacao();
 			model.addAttribute("usuarioSessao", usuarioSessao);
@@ -545,11 +549,20 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 	
 	@RequestMapping(value = "/jogar", method = {RequestMethod.POST,RequestMethod.GET}) // Link do submit do form e o method POST que botou la
 	public ModelAndView jogar(Model model, String questaoSubmit, String respostaSubmit, Integer idQuestao) { // model é usado para mandar , e variavelNome está recebendo o name="nome" do submit feito na pagina principal 
+		Boolean trapaceou = false;
 		if(usuarioSessao != null) {
 			
 			colocacao();
 			
-			if( questaoSubmit != null && respostaSubmit != null && idQuestao != null ) {
+			if(idQuestao == questaoAnterior) {
+				trapaceou = true;
+			} else {
+				questaoAnterior = idQuestao;
+			}
+			
+			
+			
+			if( questaoSubmit != null && respostaSubmit != null && idQuestao != null && !trapaceou) {
 				String questao = questaoSubmit;
 				String resposta = respostaSubmit;
 				List<Pergunta> p = perguntaDao.analisar(questao,resposta,idQuestao);
@@ -579,7 +592,14 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 					usuarioDao.save(usuarioSessao);
 					registraMsg("RESPOSTA", "CORRETA", "info");
 				}
+				usuarioSessao.setQuestaoAtual(0);
+				usuarioDao.save(usuarioSessao);
 			}
+			
+			if(trapaceou) {
+				registraMsg("ATUALIZAÇÃO", "SEM ATUALIZAR A PÁGINA!", "erro");
+			}
+			
 			// Gerar pergunta aleatória.
 			List<Pergunta> p = perguntaDao.buscarPerguntas();
 			Integer total = p.size();
@@ -595,6 +615,9 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 						aleatorio = 0;
 					}
 				}
+			}
+			if(usuarioSessao.getQuestaoAtual() > 0) {
+				aleatorio = usuarioSessao.getQuestaoAtual();
 			}
 			//Questao atual para nao trapacear. Para nao clicar em voltar no navegador.
 			usuarioSessao.setQuestaoAtual(aleatorio);
@@ -716,6 +739,7 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 					
 				}
 			}
+			
 			model.addAttribute("perg", questaoJogo.getQuestao());
 			model.addAttribute("idQuestao", questaoJogo.getIdquestao());
 			model.addAttribute("alt1", questaoJogo.getResposta1());

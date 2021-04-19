@@ -1,5 +1,13 @@
 <script type="text/javascript">
 
+window.history.forward();
+function noBack()
+{	
+	//Sem voltar a pagina
+    window.history.forward();
+}
+
+
 function fullScreen(){
 	if (!document.fullscreenElement && !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) { 
 		if (document.documentElement.requestFullscreen) {
@@ -65,6 +73,8 @@ function mNum(num){
 }
 
 function iniciando(){
+	window.history.forward();
+	
 	var msg = '${mensagem}' + '';
 	if (msg != ''){
 		if('${tipoMensagem}' == 'info'){
