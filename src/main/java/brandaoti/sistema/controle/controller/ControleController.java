@@ -95,7 +95,6 @@ public class ControleController {
 			p.setResposta3(ptemp.getResposta3());
 			p.setResposta4(ptemp.getResposta4());
 			perguntaDao.save(p);
-			System.out.println("SALVO");
 		}
 	}
 	//Perguntas iniciais ----------------------------------------------------------------------------------------
@@ -597,9 +596,17 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 					}
 				}
 			}
+			//Questao atual para nao trapacear. Para nao clicar em voltar no navegador.
+			usuarioSessao.setQuestaoAtual(aleatorio);
+			usuarioDao.save(usuarioSessao);
 			questoesJogadas.add(aleatorio);
+			
 			if(total <= questoesJogadas.size()) {
 				questoesJogadas.clear();
+				usuarioSessao.setPontuacao(0);
+				usuarioSessao.setQuestaoAtual(0);
+				usuarioDao.save(usuarioSessao);
+				registraMsg("FINALIZADO", "PARABÉNS VOCÊ FINALIZOU TODAS!", "info");
 			}
 			
 			QuestaoJogo questaoJogo = new QuestaoJogo();

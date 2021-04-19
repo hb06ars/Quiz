@@ -54,6 +54,9 @@ public class Usuario {
 	
 	@Column
 	private Integer tentativas = 0;
+	
+	@Column
+	private Integer questaoAtual = 0;
 
 	public Integer getId() {
 		return id;
@@ -150,9 +153,14 @@ public class Usuario {
 	public void setTentativas(Integer tentativas) {
 		this.tentativas = tentativas;
 	}
-	
-	
-	
+
+	public Integer getQuestaoAtual() {
+		return questaoAtual;
+	}
+
+	public void setQuestaoAtual(Integer questaoAtual) {
+		this.questaoAtual = questaoAtual;
+	}
 
 	
 	
