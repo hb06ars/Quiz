@@ -1,11 +1,5 @@
 <script type="text/javascript">
 
-window.history.forward();
-function noBack()
-{	
-	//Sem voltar a pagina
-    window.history.forward();
-}
 
 
 function fullScreen(){
