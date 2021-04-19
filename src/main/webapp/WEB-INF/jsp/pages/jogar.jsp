@@ -30,6 +30,7 @@
 </style>
 
 <script>
+window.history.forward();
 
 function desabilitaF5(e) { 
 	  if ((e.which || e.keyCode) == 116) 

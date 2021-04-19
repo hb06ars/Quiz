@@ -67,7 +67,7 @@ function mNum(num){
 }
 
 function iniciando(){
-	window.history.forward();
+	
 	
 	var msg = '${mensagem}' + '';
 	if (msg != ''){
