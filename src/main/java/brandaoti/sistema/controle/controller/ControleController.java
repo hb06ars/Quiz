@@ -556,10 +556,13 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 			
 			if(idQuestao == questaoAnterior) {
 				trapaceou = true;
+				usuarioSessao.setPontuacao(0);
+				usuarioSessao.setTentativas(0);
+				usuarioDao.save(usuarioSessao);
 			} else {
 				questaoAnterior = idQuestao;
 			}
-			
+			System.out.println("Trapaceou: "+trapaceou);
 			
 			
 			if( questaoSubmit != null && respostaSubmit != null && idQuestao != null && !trapaceou) {

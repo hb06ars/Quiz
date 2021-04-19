@@ -32,13 +32,6 @@
 <script>
 window.history.forward();
 
-function desabilitaF5(e) { 
-	  if ((e.which || e.keyCode) == 116) 
-	    e.preventDefault(); 
-	};
-	$(document).on("keydown", desabilitaF5);
-	//document.addEventListener("keydown", desabilitaF5); // com JavaScript
-
 
 var repeticoes = 0;
 
