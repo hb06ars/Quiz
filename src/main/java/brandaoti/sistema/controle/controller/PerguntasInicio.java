@@ -12,6 +12,784 @@ public class PerguntasInicio {
 		Pergunta p = new Pergunta();
 		
 		
+		
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Normalmente, quantos litros de sangue uma pessoa tem? Em média, quantos são retirados numa doação de sangue?");
+		p.setResposta1("Tem entre 2 a 4 litros. São retirados 450 mililitros");
+		p.setCorreta("Tem entre 4 a 6 litros. São retirados 450 mililitros");
+		p.setResposta2("Tem 10 litros. São retirados 2 litros");
+		p.setResposta3("Tem 7 litros. São retirados 1,5 litros");
+		p.setResposta4("Tem 0,5 litros. São retirados 0,5 litros");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("De quem é a famosa frase ''Penso, logo existo''?");
+		p.setResposta1("Platão");
+		p.setResposta2("Galileu Galilei");
+		p.setCorreta("Descartes");
+		p.setResposta3("Sócrates");
+		p.setResposta4("Francis Bacon");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("De onde é a invenção do chuveiro elétrico?");
+		p.setResposta1("França");
+		p.setResposta2("Inglaterra");
+		p.setCorreta("Brasil");
+		p.setResposta3("Austrália");
+		p.setResposta4("Itália");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Quais o menor e o maior país do mundo?");
+		p.setCorreta("Vaticano e Rússia");
+		p.setResposta1("Nauru e China");
+		p.setResposta2("Mônaco e Canadá");
+		p.setResposta3("Malta e Estados Unidos");
+		p.setResposta4("São Marino e Índia");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Qual o nome do presidente do Brasil que ficou conhecido como Jango?");
+		p.setResposta1("Jânio Quadros");
+		p.setResposta2("Jacinto Anjos");
+		p.setResposta3("Getúlio Vargas");
+		p.setResposta4("João Figueiredo");
+		p.setCorreta("João Goulart");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Qual o grupo em que todas as palavras foram escritas corretamente?");
+		p.setResposta1("Asterístico, beneficiente, meteorologia, entertido");
+		p.setCorreta("Asterisco, beneficente, meteorologia, entretido");
+		p.setResposta2("Asterisco, beneficente, metereologia, entretido");
+		p.setResposta3("Asterístico, beneficiente, metereologia, entretido");
+		p.setResposta4("Asterisco, beneficiente, metereologia, entretido");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Qual o livro mais vendido no mundo a seguir à Bíblia?");
+		p.setResposta1("O Senhor dos Anéis");
+		p.setCorreta("Dom Quixote");
+		p.setResposta2("O Pequeno Príncipe");
+		p.setResposta3("Ela, a Feiticeira");
+		p.setResposta4("Um Conto de Duas Cidades");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Quantas casas decimais tem o número pi?");
+		p.setResposta1("Duas");
+		p.setResposta2("Centenas");
+		p.setCorreta("Infinitas");
+		p.setResposta3("Vinte");
+		p.setResposta4("Milhares");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Atualmente, quantos elementos químicos a tabela periódica possui?");
+		p.setResposta1("113");
+		p.setResposta2("109");
+		p.setResposta3("108");
+		p.setCorreta("118");
+		p.setResposta4("92");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Quais os países que têm a maior e a menor expectativa de vida do mundo?");
+		p.setCorreta("Japão e Serra Leoa");
+		p.setResposta1("Austrália e Afeganistão");
+		p.setResposta2("Itália e Chade");
+		p.setResposta3("Brasil e Congo");
+		p.setResposta4("Estados Unidos e Angola");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("O que a palavra legend significa em português?");
+		p.setResposta1("Legenda");
+		p.setResposta2("Conto");
+		p.setResposta3("História");
+		p.setCorreta("Lenda");
+		p.setResposta4("Legendário");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Qual o número mínimo de jogadores numa partida de futebol?");
+		p.setResposta1("8");
+		p.setResposta2("10");
+		p.setResposta3("9");
+		p.setResposta4("5");
+		p.setCorreta("7");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Quais os principais autores do Barroco no Brasil?");
+		p.setCorreta("Gregório de Matos, Bento Teixeira e Manuel Botelho de Oliveira");
+		p.setResposta1("Miguel de Cervantes, Gregório de Matos e Danthe Alighieri");
+		p.setResposta2("Padre Antônio Vieira, Padre Manuel de Melo e Gregório de Matos");
+		p.setResposta3("Castro Alves, Bento Teixeira e Manuel Botelho de Oliveira");
+		p.setResposta4("Álvares de Azevedo, Gregório de Matos e Bento Teixeira");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Quais as duas datas que são comemoradas em novembro?");
+		p.setResposta1("Independência do Brasil e Dia da Bandeira");
+		p.setCorreta("Proclamação da República e Dia Nacional da Consciência Negra");
+		p.setResposta2("Dia do Médico e Dia de São Lucas");
+		p.setResposta3("Dia de Finados e Dia Nacional do Livro");
+		p.setResposta4("Black Friday e Dia da Árvore");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Quem pintou ''Guernica''?");
+		p.setResposta1("Paul Cézanne");
+		p.setCorreta("Pablo Picasso");
+		p.setResposta2("Diego Rivera");
+		p.setResposta3("Tarsila do Amaral");
+		p.setResposta4("Salvador Dalí");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Quanto tempo a luz do Sol demora para chegar à Terra?");
+		p.setResposta1("12 minutos");
+		p.setResposta2("1 dia");
+		p.setResposta3("12 horas");
+		p.setCorreta("8 minutos");
+		p.setResposta4("segundos");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Qual a tradução da frase ''Fabiano cogió su saco antes de salir''?");
+		p.setResposta1("Fabiano coseu seu paletó antes de sair");
+		p.setResposta2("Fabiano fechou o saco antes de sair");
+		p.setCorreta("Fabiano pegou seu paletó antes de sair");
+		p.setResposta3("Fabiano cortou o saco antes de cair");
+		p.setResposta4("Fabiano rasgou seu paletó antes de cair");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Qual a nacionalidade de Che Guevara?");
+		p.setResposta1("Cubana");
+		p.setResposta2("Peruana");
+		p.setResposta3("Panamenha");
+		p.setResposta4("Boliviana");
+		p.setCorreta("Argentina");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Quais são os três predadores do reino animal reconhecidos pela habilidade de caçar em grupo, se camuflar para surpreender as presas e possuir sentidos apurados, respectivamente:");
+		p.setResposta1("Tubarão branco, crocodilo e sucuri");
+		p.setResposta2("Tigre, gavião e orca");
+		p.setCorreta("Hiena, urso branco e lobo cinzento");
+		p.setResposta3("Orca, onça e tarântula");
+		p.setResposta4("Leão, tubarão branco e urso cinzento");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Qual a altura da rede de vôlei nos jogos masculino e feminino?");
+		p.setResposta1("2,4 para ambos");
+		p.setResposta2("2,5 m e 2,0 m");
+		p.setResposta3("1,8 m e 1,5 m");
+		p.setResposta4("2,45 m e 2,15 m");
+		p.setCorreta("2,43 m e 2,24 m");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Em que ordem surgiram os modelos atômicos?");
+		p.setResposta1("Thomson, Dalton, Rutherford, Rutherford-Bohr");
+		p.setResposta2("Rutherford-Bohr, Rutherford, Thomson, Dalton");
+		p.setResposta3("Dalton, Rutherford-Bohr, Thomson, Rutherford");
+		p.setResposta4("Dalton, Thomson, Rutherford-Bohr, Rutherford");
+		p.setCorreta("Dalton, Thomson, Rutherford, Rutherford-Bohr");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Qual personagem folclórico costuma ser agradado pelos caçadores com a oferta de fumo?");
+		p.setCorreta("Caipora");
+		p.setResposta1("Saci");
+		p.setResposta2("Lobisomem");
+		p.setResposta3("Boitatá");
+		p.setResposta4("Negrinho do Pastoreio");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Em que período da pré-história o fogo foi descoberto?");
+		p.setResposta1("Neolítico");
+		p.setCorreta("Paleolítico");
+		p.setResposta2("Idade dos Metais");
+		p.setResposta3("Período da Pedra Polida");
+		p.setResposta4("Idade Média");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Qual das alternativas abaixo apenas contêm classes de palavras?");
+		p.setResposta1("Vogais, semivogais e consoantes");
+		p.setResposta2("Artigo, verbo transitivo e verbo intransitivo");
+		p.setResposta3("Fonologia, Morfologia e Sintaxe");
+		p.setResposta4("Hiatos, ditongos e tritongos");
+		p.setCorreta("Substantivo, verbo e preposição");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Qual a montanha mais alta do Brasil?");
+		p.setCorreta("Pico da Neblina");
+		p.setResposta1("Pico Paraná");
+		p.setResposta2("Monte Roraima");
+		p.setResposta3("Pico Maior de Friburgo");
+		p.setResposta4("Pico da Bandeira");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Qual a velocidade da luz?");
+		p.setResposta1("300 000 000 metros por segundo (m/s)");
+		p.setResposta2("150 000 000 metros por segundo (m/s)");
+		p.setResposta3("199 792 458 metros por segundo (m/s)");
+		p.setCorreta("299 792 458 metros por segundo (m/s)");
+		p.setResposta4("30 000 000 metros por segundo (m/s)");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Em qual local da Ásia o português é língua oficial?");
+		p.setResposta1("Índia");
+		p.setResposta2("Filipinas");
+		p.setResposta3("Moçambique");
+		p.setCorreta("Macau");
+		p.setResposta4("Portugal");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("''It is six twenty'' ou ''twenty past six''. Que horas são em inglês?");
+		p.setResposta1("12:06");
+		p.setCorreta("6:20");
+		p.setResposta2("2:20");
+		p.setResposta3("6:02");
+		p.setResposta4("12:20");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Quem é o autor de ''O Príncipe''?");
+		p.setCorreta("Maquiavel");
+		p.setResposta1("Antoine de Saint-Exupéry");
+		p.setResposta2("Montesquieu");
+		p.setResposta3("Thomas Hobbes");
+		p.setResposta4("Rousseau");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Como é a conjugação do verbo caber na 1.ª pessoa do singular do presente do indicativo?");
+		p.setCorreta("Eu caibo");
+		p.setResposta1("Ele cabe");
+		p.setResposta2("Que eu caiba");
+		p.setResposta3("Eu cabo");
+		p.setResposta4("Nenhuma das alternativas");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Quais destas construções famosas ficam nos Estados Unidos?");
+		p.setCorreta("Estátua da Liberdade, Golden Gate Bridge e Empire State Building");
+		p.setResposta1("Estátua da Liberdade, Big Ben e The High Line");
+		p.setResposta2("Angkor Wat, Taj Mahal e Skywalk no Grand Canyon");
+		p.setResposta3("Lincoln Memorial, Sidney Opera House e Burj Khalifa");
+		p.setResposta4("30 St Mary Axe, The High Line e Residencial 148 Spruce Street");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Quais destas doenças são sexualmente transmissíveis?");
+		p.setResposta1("Aids, tricomoníase e ebola");
+		p.setResposta2("Chikungunya, aids e herpes genital");
+		p.setCorreta("Gonorreia, clamídia e sífilis");
+		p.setResposta3("Botulismo, cistite e gonorreia");
+		p.setResposta4("Hepatite B, febre tifoide e hanseníase");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Qual destes países é transcontinental?");
+		p.setCorreta("Rússia");
+		p.setResposta1("Filipinas");
+		p.setResposta2("Istambul");
+		p.setResposta3("Groenlândia");
+		p.setResposta4("Tanzânia");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Em qual das orações abaixo a palavra foi empregada incorretamente?");
+		p.setResposta1("Mais uma vez, portou-se mal.");
+		p.setCorreta("É um homem mal.");
+		p.setResposta2("Esse é o mal de todos.");
+		p.setResposta3("Mal falou nele, o fulano apareceu.");
+		p.setResposta4("É um mau vendedor.");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Qual foi o recurso utilizado inicialmente pelo homem para explicar a origem das coisas?");
+		p.setResposta1("A Filosofia");
+		p.setResposta2("A Biologia");
+		p.setResposta3("A Matemática");
+		p.setResposta4("A Astronomia");
+		p.setCorreta("A Mitologia");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Qual das alternativas menciona apenas símbolos nacionais?");
+		p.setResposta1("Bandeira insígnia da presidência, bandeira nacional, brasão, hinos e selo");
+		p.setCorreta("Bandeira nacional, armas nacionais, hino nacional e selo nacional");
+		p.setResposta2("Bandeira nacional, brasão, hino nacional e hino da independência");
+		p.setResposta3("Bandeira nacional, cores nacionais, hino nacional e hino da independência");
+		p.setResposta4("Bandeira insígnia da presidência, brasão flora e fauna e hinos");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Quais os planetas do sistema solar?");
+		p.setCorreta("Terra, Vênus, Saturno, Urano, Júpiter, Marte, Netuno, Mercúrio");
+		p.setResposta1("Júpiter, Marte, Mercúrio, Netuno, Plutão, Saturno, Terra, Urano, Vênus");
+		p.setResposta2("Vênus, Saturno, Urano, Júpiter, Marte, Netuno, Mercúrio");
+		p.setResposta3("Júpiter, Marte, Mercúrio, Netuno, Plutão, Saturno, Sol, Terra, Urano, Vênus");
+		p.setResposta4("Terra, Vênus, Saturno, Júpiter, Marte, Netuno, Mercúrio");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Qual era o nome de Aleijadinho?");
+		p.setResposta1("Alexandrino Francisco Lisboa");
+		p.setResposta2("Manuel Francisco Lisboa");
+		p.setResposta3("Alex Francisco Lisboa");
+		p.setResposta4("Francisco Antônio Lisboa");
+		p.setCorreta("Antônio Francisco Lisboa");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Júpiter e Plutão são os correlatos romanos de quais deuses gregos?");
+		p.setResposta1("Ares e Hermes");
+		p.setResposta2("Cronos e Apolo");
+		p.setCorreta("Zeus e Hades");
+		p.setResposta3("Dionísio e Deméter");
+		p.setResposta4("Zeus e Ares");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Qual o maior animal terrestre?");
+		p.setResposta1("Baleia Azul");
+		p.setResposta2("Dinossauro");
+		p.setCorreta("Elefante africano");
+		p.setResposta3("Tubarão Branco");
+		p.setResposta4("Girafa");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Qual o tema do famoso discurso Eu Tenho um Sonho, de Martin Luther King?");
+		p.setCorreta("Igualdade das raças");
+		p.setResposta1("Justiça para os menos favorecidos");
+		p.setResposta2("Intolerância religiosa");
+		p.setResposta3("Prêmio Nobel da Paz");
+		p.setResposta4("Luta contra o Apartheid");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Que líder mundial ficou conhecida como ''Dama de Ferro''?");
+		p.setResposta1("Dilma Rousseff");
+		p.setResposta2("Angela Merkel");
+		p.setCorreta("Margaret Thatcher");
+		p.setResposta3("Hillary Clinton");
+		p.setResposta4("Christine Lagarde");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("O que são Acordo de Paris e Tríplice Aliança respectivamente?");
+		p.setResposta1("Acordo ortográfico entre países cuja língua oficial é o francês e Acordo de cooperação financeira internacional entre as três maiores potências mundiais");
+		p.setResposta2("Acordo entre países europeus acerca da imigração e Acordo econômico entre Inglaterra, Rússia a França");
+		p.setResposta3("Acordo entre vários países acerca das consequências do aquecimento global e Acordo de cooperação financeira internacional entre as três maiores potências mundiais");
+		p.setResposta4("Acordo de cooperação financeira internacional entre as três maiores potências mundiais e Acordo entre vários países acerca das consequências do aquecimento global");
+		p.setCorreta("Acordo entre vários países acerca das consequências do aquecimento global e Acordo entre Alemanha, império Austro-Húngaro e Itália acerca de apoio em caso de guerra");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Quais os nomes dos três Reis Magos?");
+		p.setResposta1("Gaspar, Nicolau e Natanael");
+		p.setCorreta("Belchior, Gaspar e Baltazar");
+		p.setResposta2("Belchior, Gaspar e Nataniel");
+		p.setResposta3("Gabriel, Benjamim e Melchior");
+		p.setResposta4("Melchior, Noé e Galileu");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Quais os principais heterônimos de Fernando Pessoa?");
+		p.setCorreta("Alberto Caeiro, Ricardo Reis e Álvaro de Campos");
+		p.setResposta1("Ariano Suassuna, Raul Bopp e Quincas Borba");
+		p.setResposta2("Bento Teixeira, Ricardo Reis e Haroldo de Campos");
+		p.setResposta3("Alberto Caeiro, Ricardo Leite e Augusto de Campos");
+		p.setResposta4("Bento Teixeira, Ricardo Reis e Augusto de Campos");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Qual a religião monoteísta que conta com o maior número de adeptos no mundo?");
+		p.setResposta1("Judaísmo");
+		p.setResposta2("Zoroastrismo");
+		p.setResposta3("Islamismo");
+		p.setCorreta("Cristianismo");
+		p.setResposta4("Hinduísmo");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Qual desses filmes foi baseado na obra de Shakespeare?");
+		p.setCorreta("Muito Barulho por Nada (2012)");
+		p.setResposta1("Capitães de Areia (2011)");
+		p.setResposta2("A Dama das Camélias (1936)");
+		p.setResposta3("A Revolução dos Bichos (1954)");
+		p.setResposta4("Excalibur (1981)");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Quem foi o primeiro homem a pisar na Lua? Em que ano aconteceu?");
+		p.setResposta1("Yuri Gagarin, em 1961");
+		p.setResposta2("Buzz Aldrin, em 1969");
+		p.setResposta3("Charles Conrad, em 1969");
+		p.setResposta4("Charles Duke, em 1971");
+		p.setCorreta("Neil Armstrong, em 1969.");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Qual o nome do cientista que descobriu o processo de pasteurização e a vacina contra a raiva?");
+		p.setResposta1("Marie Curie");
+		p.setResposta2("Blaise Pascal");
+		p.setCorreta("Louis Pasteur");
+		p.setResposta3("Antoine Lavoisier");
+		p.setResposta4("Charles Darwin");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("As pessoas de qual tipo sanguíneo são consideradas doadores universais?");
+		p.setResposta1("Tipo A");
+		p.setResposta2("Tipo B");
+		p.setCorreta("Tipo O");
+		p.setResposta3("Tipo AB");
+		p.setResposta4("Tipo ABO");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Quais são os cromossomos que determinam o sexo masculino?");
+		p.setResposta1("Os V");
+		p.setResposta2("Os X");
+		p.setCorreta("Os Y");
+		p.setResposta3("Os W");
+		p.setResposta4("Os Z");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Em que estado australiano fica situada a cidade de Sydney?");
+		p.setCorreta("Nova Gales do Sul");
+		p.setResposta1("Victoria");
+		p.setResposta2("Tasmânia");
+		p.setResposta3("Queensland");
+		p.setResposta4("Norfolk");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Que organização juvenil foi fundado por Baden-Powell?");
+		p.setResposta1("A juventude socialista");
+		p.setCorreta("O escotismo");
+		p.setResposta2("O clube dos aventureiros");
+		p.setResposta3("A associação juvenil");
+		p.setResposta4("A Organização mundial da juventude");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Quem amamentou os gêmeos Rômulo e Remo?");
+		p.setResposta1("uma cabra");
+		p.setResposta2("uma vaca");
+		p.setResposta3("uma ovelha");
+		p.setResposta4("uma gata");
+		p.setCorreta("uma loba");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("No exterior de que famoso edifício francês foi construída uma enorme pirâmide de vidro em 1989?");
+		p.setResposta1("Torre Eiffel");
+		p.setResposta2("Petit Palais");
+		p.setResposta3("Grand Palais");
+		p.setCorreta("Museu do Louvre");
+		p.setResposta4("Arco do Triunfo");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Como se chamam os vasos que transportam sangue do coração para a periferia do corpo?");
+		p.setResposta1("veias");
+		p.setResposta2("átrios");
+		p.setResposta3("ventrículos");
+		p.setCorreta("artérias");
+		p.setResposta4("aurículos");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Com que dois países faz fronteira o Equador?");
+		p.setResposta1("com o Brasil e com a Colômbia");
+		p.setResposta2("com a Colômbia e com a Venezuela");
+		p.setCorreta("com a Colômbia e com o Peru");
+		p.setResposta3("com o Peru e com o Equador");
+		p.setResposta4("com o Equador e o Brasil");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Que animal gruguleja?");
+		p.setResposta1("o pavão");
+		p.setResposta2("a garça");
+		p.setResposta3("o papagaio");
+		p.setResposta4("a cacatua");
+		p.setCorreta("o peru");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Qual é o maior arquipélago da Terra?");
+		p.setResposta1("a Filipinas");
+		p.setCorreta("a Indonésia");
+		p.setResposta2("as Bahamas");
+		p.setResposta3("a Finlândia");
+		p.setResposta4("as Maldivas");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Que substância é absorvida pelas plantas e expirada por todos os seres vivos?");
+		p.setResposta1("o oxigênio");
+		p.setResposta2("o nitrogênio");
+		p.setResposta3("o nitrato de sódio");
+		p.setResposta4("o dióxido de ferro");
+		p.setCorreta("o dióxido de carbono");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Em que oceano fica Madagascar?");
+		p.setCorreta("Oceano Índico");
+		p.setResposta1("Oceano Antártico");
+		p.setResposta2("Oceano Atlântico");
+		p.setResposta3("Oceano Pacífico");
+		p.setResposta4("Oceano Ártico");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Que artista é conhecido como um dos expoentes máximos do Ready-Mades?");
+		p.setResposta1("Pablo Picasso");
+		p.setResposta2("Salvador Dalí");
+		p.setCorreta("Marcel Duchamp");
+		p.setResposta3("Van Gogh");
+		p.setResposta4("Leonardo da Vinci");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Qual o metal cujo símbolo químico é o Au?");
+		p.setResposta1("Cobre");
+		p.setResposta2("Prata");
+		p.setResposta3("Mercúrio");
+		p.setCorreta("Ouro");
+		p.setResposta4("Manganês");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Em que século o continente europeu foi devastado pela peste bubônica?");
+		p.setResposta1("No século X");
+		p.setResposta2("No século XI");
+		p.setResposta3("No século XII");
+		p.setResposta4("No século XIII");
+		p.setCorreta("No século XIV");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Quem viveu, segundo a bíblia, 969 anos?");
+		p.setResposta1("Jesus Cristo");
+		p.setResposta2("Noé");
+		p.setCorreta("Matusalém");
+		p.setResposta3("Benjamim");
+		p.setResposta4("Abel");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Em que cidade ocorreu a Eco-92, a Conferência das Nações Unidas sobre ambiente e desenvolvimento?");
+		p.setResposta1("Buenos Aires");
+		p.setCorreta("Rio de Janeiro");
+		p.setResposta2("Montevidéu");
+		p.setResposta3("Assunção");
+		p.setResposta4("Caracas");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Quem pintou o teto da capela sistina?");
+		p.setCorreta("Michelangelo");
+		p.setResposta1("Leonardo da Vinci");
+		p.setResposta2("Rafael");
+		p.setResposta3("Sandro Botticelli");
+		p.setResposta4("Donatello");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Quantos graus são necessários para que dois ângulos sejam complementares?");
+		p.setResposta1("45");
+		p.setResposta2("60");
+		p.setCorreta("90");
+		p.setResposta3("180");
+		p.setResposta4("360");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Quem foi o criador da tragédia grega?");
+		p.setResposta1("Homero");
+		p.setResposta2("Eurípedes");
+		p.setResposta3("Plutarco");
+		p.setCorreta("Ésquilo");
+		p.setResposta4("Sófocles");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+		p = new Pergunta();
+		p.setAtivo(true);
+		p.setCodigo("00001");
+		p.setQuestao("Jim Morrison era vocalista de que grupo?");
+		p.setResposta1("The Police");
+		p.setCorreta("The Doors");
+		p.setResposta2("Pink Floyd");
+		p.setResposta3("Nirvana");
+		p.setResposta4("AC/DC");
+		todasPerguntas.add(p);
+		// QUESTÃO ---------------------------------------------------------------------------------
+
+		
+		
+		
+		
+		
 		// QUESTÃO ---------------------------------------------------------------------------------
 		p = new Pergunta();
 		p.setAtivo(true);
