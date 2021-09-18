@@ -528,36 +528,43 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 	@RequestMapping(value = "/home", method = {RequestMethod.POST,RequestMethod.GET}) // Link do submit do form e o method POST que botou la
 	public ModelAndView logar(HttpServletRequest request, HttpServletResponse response, Model model, @RequestParam(value = "usuarioVal", defaultValue = "", required=false ) String variavelUsuario, @RequestParam(value = "senhaVal", defaultValue = "", required=false ) String variavelSenha) { // model é usado para mandar , e variavelNome está recebendo o name="nome" do submit feito na pagina principal 
 		HttpSession session = request.getSession();
-		Usuario usuarioSessao = usuarioDao.fazerLogin(variavelUsuario, variavelSenha);
+		String link = "deslogar";
+		Usuario usuarioSessao = new Usuario();
+		if(session.getAttribute("usuarioSessao") != null) {
+			usuarioSessao = (Usuario) session.getAttribute("usuarioSessao");
+		} else {
+			usuarioSessao = usuarioDao.fazerLogin(variavelUsuario, variavelSenha);
+		}
 		String itemMenuSelecionado = "";
 		if(usuarioSessao != null) {
 			session.setAttribute("usuarioSessao",usuarioSessao);
+			usuarioSessao.setPontuacao(0);
+			usuarioSessao.setTentativas(0);
+			usuarioDao.save(usuarioSessao);
+			if(usuarioSessao != null) {
+				colocacao(usuarioSessao);
+				model.addAttribute("usuarioSessao", usuarioSessao);
+			}
+			List<Categoria> categorias = categoriaDao.buscarCategorias();
+			List<Pergunta> pergunta = perguntaDao.buscarPerguntas();
+			
+			Double totalinicio = 0.0;
+			
+			double d = totalinicio;
+	        String s = String.format("%.2f", d);
+	        s = s.replace(",", ".");
+	        
+	        if(session.getAttribute("itemMenuSelecionado") != null) {
+	        	itemMenuSelecionado = (String) session.getAttribute("itemMenuSelecionado");
+			}
+	        
+	        link = "pages/home";
+			model.addAttribute("totalinicio", s);
+			model.addAttribute("categorias", categorias);
+			model.addAttribute("pergunta", pergunta);
+			
+			
 		}
-		usuarioSessao.setPontuacao(0);
-		usuarioSessao.setTentativas(0);
-		usuarioDao.save(usuarioSessao);
-		if(usuarioSessao != null) {
-			colocacao(usuarioSessao);
-			model.addAttribute("usuarioSessao", usuarioSessao);
-		}
-		List<Categoria> categorias = categoriaDao.buscarCategorias();
-		List<Pergunta> pergunta = perguntaDao.buscarPerguntas();
-		
-		Double totalinicio = 0.0;
-		
-		double d = totalinicio;
-        String s = String.format("%.2f", d);
-        s = s.replace(",", ".");
-        
-        if(session.getAttribute("itemMenuSelecionado") != null) {
-        	itemMenuSelecionado = (String) session.getAttribute("itemMenuSelecionado");
-		}
-        
-        String link = "pages/home";
-		model.addAttribute("totalinicio", s);
-		model.addAttribute("categorias", categorias);
-		model.addAttribute("pergunta", pergunta);
-		
 		ModelAndView modelAndView = new ModelAndView(link);
 		return modelAndView; 
 	}
