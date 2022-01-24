@@ -1,23 +1,14 @@
 package brandaoti.sistema.controle.controller;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
-import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -26,20 +17,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileItemFactory;
-import org.apache.commons.fileupload.disk.DiskFileItem;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.io.IOUtils;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -47,8 +30,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
 import brandaoti.sistema.controle.dao.CategoriaDao;
 import brandaoti.sistema.controle.dao.PerfilDao;
@@ -151,14 +132,14 @@ public class ControleController extends HttpServlet {
 		tipoMensagem = tipo;
 	}
 	
-	public ModelAndView enviaMsg(ModelAndView modelAndView) {
-		modelAndView.addObject("mensagem", mensagem);
-		modelAndView.addObject("tituloMensagem", tituloMensagem);
-		modelAndView.addObject("tipoMensagem", tipoMensagem);
+	public HttpServletRequest enviaMsg(HttpServletRequest request) {
+		request.setAttribute("mensagem", mensagem);
+		request.setAttribute("tituloMensagem", tituloMensagem);
+		request.setAttribute("tipoMensagem", tipoMensagem);
 		mensagem = null;
 		tituloMensagem = null;
 		tipoMensagem = null;
-		return modelAndView;
+		return request;
 	}
 	
 	
@@ -265,7 +246,7 @@ public class ControleController extends HttpServlet {
 	/* SALVAR EXCEL */
 	@Transactional
 	@RequestMapping(value = "/upload/excel", method = {RequestMethod.POST, RequestMethod.GET}) // Pagina de Altera��o de Perfil
-	public ModelAndView uploadExcel(HttpServletRequest request, HttpServletResponse response, Model model, String tabelaUsada, @ModelAttribute MultipartFile file) throws Exception, IOException { //Fun��o e alguns valores que recebe...
+	public void uploadExcel(HttpServletRequest request, HttpServletResponse response,  String tabelaUsada, @ModelAttribute MultipartFile file) throws Exception, IOException { //Fun��o e alguns valores que recebe...
 		String atualizarPagina = "";
 		String link = "/pages/home"; //Session
 		HttpSession session = request.getSession();
@@ -289,9 +270,9 @@ public class ControleController extends HttpServlet {
 			}
 			registraMsg("Excel", "Dados inseridos com sucesso..", "info");
 		}
-		ModelAndView modelAndView = new ModelAndView(link); //JSP que ir� acessar.
-		modelAndView.addObject("atualizarPagina", atualizarPagina);
-		return modelAndView; //Retorna para a p�gina
+		 //JSP que ir� acessar.
+		request.setAttribute("atualizarPagina", atualizarPagina);
+		request.getRequestDispatcher("/WEB-INF/jsp/"+link+".jsp").forward(request, response); //Retorna para a p�gina
 	}
 	
 	
@@ -352,7 +333,7 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 	
 	
 	@GetMapping(value = "/deslogar")
-	public void deslogar(HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {  
+	public void deslogar(HttpServletRequest request, HttpServletResponse response) throws IOException {  
 		String link = "/deslogar";
 		HttpSession session = request.getSession();
 		session.invalidate();
@@ -361,7 +342,7 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 	
 	
 	@RequestMapping(value = "/adm/deletando/{tabela}/{id}", method = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE}) // Pagina de Alteração de Perfil
-	public ModelAndView deletando(HttpServletRequest request, HttpServletResponse response, Model model,@PathVariable("tabela") String tabela, @PathVariable("id") Integer id) { //Função e alguns valores que recebe...
+	public void deletando(HttpServletRequest request, HttpServletResponse response, @PathVariable("tabela") String tabela, @PathVariable("id") Integer id) throws ServletException, IOException { //Função e alguns valores que recebe...
 		String link = "/deslogar";
 		String atualizarPagina = "";
 		HttpSession session = request.getSession();
@@ -370,7 +351,7 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 			usuarioSessao = (Usuario) session.getAttribute("usuarioSessao");
 		}
 		if(usuarioSessao.getPerfil().getAdmin()) {
-			model.addAttribute("usuarioSessao", usuarioSessao);
+			request.setAttribute("usuarioSessao", usuarioSessao);
 			link = "/pages/"+tabela;
 			if(tabela.equals("token")) {
 				atualizarPagina = "/token";
@@ -379,8 +360,8 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 					usuarioDao.deleteById(id);
 				usuarioDao.flush();
 				List<Usuario> tokens = usuarioDao.buscaTokens();
-				model.addAttribute("atualizarPagina", atualizarPagina);
-				model.addAttribute("tokens", tokens);
+				request.setAttribute("atualizarPagina", atualizarPagina);
+				request.setAttribute("tokens", tokens);
 				
 				registraMsg("Token", "Deletado com sucesso.", "erro");
 			}
@@ -393,8 +374,8 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 					usuarioDao.flush();
 				}
 				List<Usuario> adversario = usuarioDao.funcionario();
-				model.addAttribute("adversario", adversario);
-				model.addAttribute("atualizarPagina", atualizarPagina);
+				request.setAttribute("adversario", adversario);
+				request.setAttribute("atualizarPagina", atualizarPagina);
 				
 				registraMsg("Funcionário", "Deletado com sucesso.", "erro");
 			}
@@ -414,8 +395,8 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 					
 				}
 				List<Pergunta> perguntas = perguntaDao.buscarPerguntas();
-				model.addAttribute("perguntas", perguntas);
-				model.addAttribute("atualizarPagina", atualizarPagina);
+				request.setAttribute("perguntas", perguntas);
+				request.setAttribute("atualizarPagina", atualizarPagina);
 				
 				registraMsg("Pergunta", "Deletado com sucesso.", "erro");
 			}
@@ -435,8 +416,8 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 					
 				}
 				List<Categoria> categorias = categoriaDao.buscarCategorias();
-				model.addAttribute("categorias", categorias);
-				model.addAttribute("atualizarPagina", atualizarPagina);
+				request.setAttribute("categorias", categorias);
+				request.setAttribute("atualizarPagina", atualizarPagina);
 				
 				registraMsg("Categoria", "Deletada com sucesso.", "erro");
 			}
@@ -456,16 +437,16 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 					
 				}
 				List<Usuario> usuarios = usuarioDao.usuarios();
-				model.addAttribute("usuarios", usuarios);
-				model.addAttribute("atualizarPagina", atualizarPagina);
+				request.setAttribute("usuarios", usuarios);
+				request.setAttribute("atualizarPagina", atualizarPagina);
 				
 				registraMsg("Usuário", "Usuário com sucesso.", "erro");
 			}
 			
 		}
-		ModelAndView modelAndView = new ModelAndView(link);
-		enviaMsg(modelAndView);
-		return modelAndView; 
+		
+		enviaMsg(request);
+		request.getRequestDispatcher("/WEB-INF/jsp/"+link+".jsp").forward(request, response); 
 	}
 	
 	
@@ -475,7 +456,7 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 	
 	
 	@RequestMapping(value = "/criar", method = {RequestMethod.POST,RequestMethod.GET})
-	public ModelAndView criar(Model model, Usuario usuario, String codigoAcesso, String confirmaSenha) {  
+	public void criar( HttpServletRequest request, HttpServletResponse response,  Usuario usuario, String codigoAcesso, String confirmaSenha) throws ServletException, IOException {  
 		String link = "/criar";
 		String erro="";
 		String msg="";
@@ -502,31 +483,31 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 									msg = "Usuário "+usuario.getLogin()+" cadastrado com sucesso!";
 								} else {
 									erro = "Código de acesso inválido!";
-									model.addAttribute("erro", erro);
+									request.setAttribute("erro", erro);
 								}
-								model.addAttribute("msg", msg);
+								request.setAttribute("msg", msg);
 							} else {
 								erro = "Login já existe.";
-								model.addAttribute("erro", erro);
+								request.setAttribute("erro", erro);
 							}
 						} else {
 							erro = "Login inválido.";
-							model.addAttribute("erro", erro);
+							request.setAttribute("erro", erro);
 						}
 					}
 				} else {
 					erro = "Senha não confere com a confirmação";
-					model.addAttribute("erro", erro);
+					request.setAttribute("erro", erro);
 				}
 			}
 		}	
-		ModelAndView modelAndView = new ModelAndView(link); 
-		return modelAndView; 
+		 
+		request.getRequestDispatcher("/WEB-INF/jsp/"+link+".jsp").forward(request, response); 
 	}
 	
 	
 	@RequestMapping(value = "/home", method = {RequestMethod.POST,RequestMethod.GET}) // Link do submit do form e o method POST que botou la
-	public ModelAndView logar(HttpServletRequest request, HttpServletResponse response, Model model, @RequestParam(value = "usuarioVal", defaultValue = "", required=false ) String variavelUsuario, @RequestParam(value = "senhaVal", defaultValue = "", required=false ) String variavelSenha) { // model é usado para mandar , e variavelNome está recebendo o name="nome" do submit feito na pagina principal 
+	public void logar(HttpServletRequest request, HttpServletResponse response,  @RequestParam(value = "usuarioVal", defaultValue = "", required=false ) String variavelUsuario, @RequestParam(value = "senhaVal", defaultValue = "", required=false ) String variavelSenha) throws ServletException, IOException { // model é usado para mandar , e variavelNome está recebendo o name="nome" do submit feito na pagina principal 
 		HttpSession session = request.getSession();
 		String link = "deslogar";
 		Usuario usuarioSessao = new Usuario();
@@ -543,7 +524,7 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 			usuarioDao.save(usuarioSessao);
 			if(usuarioSessao != null) {
 				colocacao(usuarioSessao);
-				model.addAttribute("usuarioSessao", usuarioSessao);
+				request.setAttribute("usuarioSessao", usuarioSessao);
 			}
 			List<Categoria> categorias = categoriaDao.buscarCategorias();
 			List<Pergunta> pergunta = perguntaDao.buscarPerguntas();
@@ -559,20 +540,20 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 			}
 	        
 	        link = "pages/home";
-			model.addAttribute("totalinicio", s);
-			model.addAttribute("categorias", categorias);
-			model.addAttribute("pergunta", pergunta);
+			request.setAttribute("totalinicio", s);
+			request.setAttribute("categorias", categorias);
+			request.setAttribute("pergunta", pergunta);
 			
 			
 		}
-		ModelAndView modelAndView = new ModelAndView(link);
-		return modelAndView; 
+		
+		request.getRequestDispatcher("/WEB-INF/jsp/"+link+".jsp").forward(request, response); 
 	}
 	
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/jogar", method = {RequestMethod.POST,RequestMethod.GET})
-	public ModelAndView jogar(HttpServletRequest request, HttpServletResponse response, Model model, String questaoSubmit, String respostaSubmit, Integer idQuestao) { // model é usado para mandar , e variavelNome está recebendo o name="nome" do submit feito na pagina principal 
+	public void jogar(HttpServletRequest request, HttpServletResponse response,  String questaoSubmit, String respostaSubmit, Integer idQuestao) throws ServletException, IOException { // model é usado para mandar , e variavelNome está recebendo o name="nome" do submit feito na pagina principal 
 		HttpSession session = request.getSession();
 		List<Integer> questoesJogadas = new ArrayList<Integer>();
 		Integer questaoAnterior = 0;
@@ -620,7 +601,9 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 					}
 					colocacao(usuarioSessao);
 					usuarioDao.save(usuarioSessao);
-					registraMsg("RESPOSTA", "ERRADA", "erro");
+					String corretaResp = "";
+					Pergunta pCorreta = perguntaDao.correta(questao,idQuestao);
+					registraMsg("RESPOSTA", "ERRADA!<br><br> <b>Resposta correta:</b><br><br> "+pCorreta.getCorreta()+" ", "erro");
 				} else {
 					//Acertou
 					Integer conta = usuarioSessao.getPontuacao() + 1;
@@ -782,27 +765,27 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 				}
 			}
 			
-			model.addAttribute("perg", questaoJogo.getQuestao());
-			model.addAttribute("idQuestao", questaoJogo.getIdquestao());
-			model.addAttribute("alt1", questaoJogo.getResposta1());
-			model.addAttribute("alt2", questaoJogo.getResposta2());
-			model.addAttribute("alt3", questaoJogo.getResposta3());
-			model.addAttribute("alt4", questaoJogo.getResposta4());
-			model.addAttribute("alt5", questaoJogo.getResposta5());
+			request.setAttribute("perg", questaoJogo.getQuestao());
+			request.setAttribute("idQuestao", questaoJogo.getIdquestao());
+			request.setAttribute("alt1", questaoJogo.getResposta1());
+			request.setAttribute("alt2", questaoJogo.getResposta2());
+			request.setAttribute("alt3", questaoJogo.getResposta3());
+			request.setAttribute("alt4", questaoJogo.getResposta4());
+			request.setAttribute("alt5", questaoJogo.getResposta5());
 			
 			
 		}
 		
-		model.addAttribute("usuarioSessao", usuarioSessao);
+		request.setAttribute("usuarioSessao", usuarioSessao);
 		String link = "pages/jogar";
-		ModelAndView modelAndView = new ModelAndView(link);
-		enviaMsg(modelAndView);
-		return modelAndView; 
+		
+		enviaMsg(request);
+		request.getRequestDispatcher("/WEB-INF/jsp/"+link+".jsp").forward(request, response); 
 	}
 	
 	
 	@RequestMapping(value = "/senha", method = {RequestMethod.POST,RequestMethod.GET}) // Link do submit do form e o method POST que botou la
-	public ModelAndView senha(HttpServletRequest request, HttpServletResponse response, Model model, String confirmaSenha, String senhaAtual, String novaSenha, Usuario usuario) { // model é usado para mandar , e variavelNome está recebendo o name="nome" do submit feito na pagina principal 
+	public void senha(HttpServletRequest request, HttpServletResponse response,  String confirmaSenha, String senhaAtual, String novaSenha, Usuario usuario) throws ServletException, IOException { // model é usado para mandar , e variavelNome está recebendo o name="nome" do submit feito na pagina principal 
 		HttpSession session = request.getSession();
 		Usuario usuarioSessao = new Usuario();
 		if(usuarioSessao != null) {
@@ -825,13 +808,13 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 					}
 				}
 			}
-			model.addAttribute("usuarioSessao", usuarioSessao);
+			request.setAttribute("usuarioSessao", usuarioSessao);
 		}
 		String link = "pages/senha";
 		
-		ModelAndView modelAndView = new ModelAndView(link);
-		enviaMsg(modelAndView);
-		return modelAndView; 
+		
+		enviaMsg(request);
+		request.getRequestDispatcher("/WEB-INF/jsp/"+link+".jsp").forward(request, response); 
 	}
 	
 	
@@ -840,7 +823,7 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 	
 	
 	@RequestMapping(value = "/perguntas", method = {RequestMethod.POST,RequestMethod.GET}) // Link do submit do form e o method POST que botou la
-	public ModelAndView pergunta(HttpServletRequest request, HttpServletResponse response, Model model, Pergunta pergunta) { // model é usado para mandar , e variavelNome está recebendo o name="nome" do submit feito na pagina principal 
+	public void pergunta(HttpServletRequest request, HttpServletResponse response,  Pergunta pergunta) throws ServletException, IOException { // model é usado para mandar , e variavelNome está recebendo o name="nome" do submit feito na pagina principal 
 		HttpSession session = request.getSession();
 		Usuario usuarioSessao = new Usuario();
 		if(session.getAttribute("usuarioSessao") != null) {
@@ -850,21 +833,21 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 			List<Pergunta> perguntas = perguntaDao.buscarPerguntas();
 			List<Categoria> categorias = categoriaDao.buscarCategorias();
 			
-			model.addAttribute("categorias", categorias);
-			model.addAttribute("perguntas", perguntas);
+			request.setAttribute("categorias", categorias);
+			request.setAttribute("perguntas", perguntas);
 		}
-		model.addAttribute("usuarioSessao", usuarioSessao);
+		request.setAttribute("usuarioSessao", usuarioSessao);
 		String link = "pages/perguntas";
 		
-		ModelAndView modelAndView = new ModelAndView(link);
-		enviaMsg(modelAndView);
-		return modelAndView; 
+		
+		enviaMsg(request);
+		request.getRequestDispatcher("/WEB-INF/jsp/"+link+".jsp").forward(request, response); 
 	}
 	
 	
 	
 	@RequestMapping(value = "/categorias", method = {RequestMethod.POST,RequestMethod.GET}) // Link do submit do form e o method POST que botou la
-	public ModelAndView categorias(HttpServletRequest request, HttpServletResponse response, Model model, Categoria categoria) { // model é usado para mandar , e variavelNome está recebendo o name="nome" do submit feito na pagina principal 
+	public void categorias(HttpServletRequest request, HttpServletResponse response,  Categoria categoria) throws ServletException, IOException { // model é usado para mandar , e variavelNome está recebendo o name="nome" do submit feito na pagina principal 
 		HttpSession session = request.getSession();
 		Usuario usuarioSessao = new Usuario();
 		if(session.getAttribute("usuarioSessao") != null) {
@@ -872,19 +855,19 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 		}
 		if(usuarioSessao != null) {
 			List<Categoria> categorias = categoriaDao.buscarCategorias();
-			model.addAttribute("categorias", categorias);
+			request.setAttribute("categorias", categorias);
 		}
-		model.addAttribute("usuarioSessao", usuarioSessao);
+		request.setAttribute("usuarioSessao", usuarioSessao);
 		String link = "pages/categorias";
 		
-		ModelAndView modelAndView = new ModelAndView(link);
-		enviaMsg(modelAndView);
-		return modelAndView; 
+		
+		enviaMsg(request);
+		request.getRequestDispatcher("/WEB-INF/jsp/"+link+".jsp").forward(request, response); 
 	}
 	
 	
 	@RequestMapping(value = "/usuarios", method = {RequestMethod.POST,RequestMethod.GET}) // Link do submit do form e o method POST que botou la
-	public ModelAndView usuarios(HttpServletRequest request, HttpServletResponse response, Model model, Usuario usuario) { // model é usado para mandar , e variavelNome está recebendo o name="nome" do submit feito na pagina principal 
+	public void usuarios(HttpServletRequest request, HttpServletResponse response,  Usuario usuario) throws ServletException, IOException { // model é usado para mandar , e variavelNome está recebendo o name="nome" do submit feito na pagina principal 
 		HttpSession session = request.getSession();
 		Usuario usuarioSessao = new Usuario();
 		if(session.getAttribute("usuarioSessao") != null) {
@@ -892,19 +875,19 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 		}
 		if(usuarioSessao != null) {
 			List<Usuario> usuarios = usuarioDao.usuarios();
-			model.addAttribute("usuarios", usuarios);
+			request.setAttribute("usuarios", usuarios);
 		}
-		model.addAttribute("usuarioSessao", usuarioSessao);
+		request.setAttribute("usuarioSessao", usuarioSessao);
 		String link = "pages/usuarios";
 		
-		ModelAndView modelAndView = new ModelAndView(link);
-		enviaMsg(modelAndView);
-		return modelAndView; 
+		
+		enviaMsg(request);
+		request.getRequestDispatcher("/WEB-INF/jsp/"+link+".jsp").forward(request, response); 
 	}
 	
 	
 	@RequestMapping(value = "/recordes", method = {RequestMethod.POST,RequestMethod.GET}) // Link do submit do form e o method POST que botou la
-	public ModelAndView recordes(HttpServletRequest request, HttpServletResponse response, Model model, Usuario usuario) { // model é usado para mandar , e variavelNome está recebendo o name="nome" do submit feito na pagina principal 
+	public void recordes(HttpServletRequest request, HttpServletResponse response,  Usuario usuario) throws ServletException, IOException { // model é usado para mandar , e variavelNome está recebendo o name="nome" do submit feito na pagina principal 
 		HttpSession session = request.getSession();
 		Usuario usuarioSessao = new Usuario();
 		if(session.getAttribute("usuarioSessao") != null) {
@@ -912,19 +895,19 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 		}
 		if(usuarioSessao != null) {
 			List<Usuario> usuarios = usuarioDao.recordes();
-			model.addAttribute("usuarios", usuarios);
+			request.setAttribute("usuarios", usuarios);
 		}
-		model.addAttribute("usuarioSessao", usuarioSessao);
+		request.setAttribute("usuarioSessao", usuarioSessao);
 		String link = "pages/recordes";
 		
-		ModelAndView modelAndView = new ModelAndView(link);
-		enviaMsg(modelAndView);
-		return modelAndView; 
+		
+		enviaMsg(request);
+		request.getRequestDispatcher("/WEB-INF/jsp/"+link+".jsp").forward(request, response); 
 	}
 	
 	
 	@RequestMapping(value = "/token", method = {RequestMethod.POST,RequestMethod.GET}) // Link do submit do form e o method POST que botou la
-	public ModelAndView token(HttpServletRequest request, HttpServletResponse response, Model model, Integer criarToken, Usuario usuario) { // model é usado para mandar , e variavelNome está recebendo o name="nome" do submit feito na pagina principal 
+	public void token(HttpServletRequest request, HttpServletResponse response,  Integer criarToken, Usuario usuario) throws ServletException, IOException { // model é usado para mandar , e variavelNome está recebendo o name="nome" do submit feito na pagina principal 
 		HttpSession session = request.getSession();
 		Usuario usuarioSessao = new Usuario();
 		if(session.getAttribute("usuarioSessao") != null) {
@@ -941,20 +924,20 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 				}
 			}
 			List<Usuario> tokens = usuarioDao.buscaTokens();
-			model.addAttribute("tokens", tokens);
-			model.addAttribute("usuarioSessao", usuarioSessao);
+			request.setAttribute("tokens", tokens);
+			request.setAttribute("usuarioSessao", usuarioSessao);
 		}
 		String link = "pages/token";
 		
-		ModelAndView modelAndView = new ModelAndView(link);
-		return modelAndView; 
+		
+		request.getRequestDispatcher("/WEB-INF/jsp/"+link+".jsp").forward(request, response); 
 	}
 	
 	
 	
 	
 	@RequestMapping(value = "/atualizarPergunta", method = {RequestMethod.POST,RequestMethod.GET}) // Link do submit do form e o method POST que botou la
-	public ModelAndView atualizarPergunta(HttpServletRequest request, HttpServletResponse response, Model model, Integer perguntaID, Boolean alterar, Boolean salvar, Boolean pesquisar, Pergunta pergunta ) { // model é usado para mandar , e variavelNome está recebendo o name="nome" do submit feito na pagina principal 
+	public void atualizarPergunta(HttpServletRequest request, HttpServletResponse response,  Integer perguntaID, Boolean alterar, Boolean salvar, Boolean pesquisar, Pergunta pergunta ) throws ServletException, IOException { // model é usado para mandar , e variavelNome está recebendo o name="nome" do submit feito na pagina principal 
 		String atualizarPagina = "";
 		HttpSession session = request.getSession();
 		Usuario usuarioSessao = new Usuario();
@@ -965,10 +948,10 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 			if(pesquisar) {
 				Pergunta p = perguntaDao.porCodigo(pergunta.getCodigo());
 				if(p != null) {
-					model.addAttribute("pergunta", p);
+					request.setAttribute("pergunta", p);
 				} else {
 					List<Pergunta> perguntas = perguntaDao.buscarPerguntas();
-					model.addAttribute("perguntas", perguntas);
+					request.setAttribute("perguntas", perguntas);
 					registraMsg("Pergunta", "Nenhuma pergunta encontrada.", "erro");
 				}
 			} 
@@ -986,7 +969,7 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 				perguntaDao.save(p);
 								
 				List<Pergunta> perguntas = perguntaDao.buscarPerguntas();
-				model.addAttribute("perguntas", perguntas);
+				request.setAttribute("perguntas", perguntas);
 				registraMsg("Pergunta", "Alterada com sucesso.", "info");
 			}
 			else if (alterar) {
@@ -1006,24 +989,24 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 					registraMsg("Pergunta", "Pergunta não encontrado.", "erro");
 				}
 				List<Pergunta> perguntas = perguntaDao.buscarPerguntas();
-				model.addAttribute("perguntas", perguntas);
+				request.setAttribute("perguntas", perguntas);
 				registraMsg("Pergunta", "Salva com sucesso.", "info");
 			}
 			
-			model.addAttribute("usuarioSessao", usuarioSessao);
+			request.setAttribute("usuarioSessao", usuarioSessao);
 		}
 		String link = "pages/perguntas";
 		
-		ModelAndView modelAndView = new ModelAndView(link);
+		
 		atualizarPagina = "/perguntas";
-		modelAndView.addObject("atualizarPagina", atualizarPagina);
-		enviaMsg(modelAndView);
-		return modelAndView; 
+		request.setAttribute("atualizarPagina", atualizarPagina);
+		enviaMsg(request);
+		request.getRequestDispatcher("/WEB-INF/jsp/"+link+".jsp").forward(request, response); 
 	}
 	
 	
 	@RequestMapping(value = "/atualizarCategoria", method = {RequestMethod.POST,RequestMethod.GET}) // Link do submit do form e o method POST que botou la
-	public ModelAndView atualizarCategoria(HttpServletRequest request, HttpServletResponse response, Model model, Integer categoriaID, Boolean alterar, Boolean salvar, Boolean pesquisar, Categoria categoria) { // model é usado para mandar , e variavelNome está recebendo o name="nome" do submit feito na pagina principal 
+	public void atualizarCategoria(HttpServletRequest request, HttpServletResponse response,  Integer categoriaID, Boolean alterar, Boolean salvar, Boolean pesquisar, Categoria categoria) throws ServletException, IOException { // model é usado para mandar , e variavelNome está recebendo o name="nome" do submit feito na pagina principal 
 		String atualizarPagina = "";
 		HttpSession session = request.getSession();
 		Usuario usuarioSessao = new Usuario();
@@ -1034,10 +1017,10 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 			if(pesquisar) {
 				Categoria c = categoriaDao.findById(categoriaID).get();
 				if(c != null) {
-					model.addAttribute("categoria", c);
+					request.setAttribute("categoria", c);
 				} else {
 					List<Categoria> categorias = categoriaDao.buscarCategorias();
-					model.addAttribute("categorias", categorias);
+					request.setAttribute("categorias", categorias);
 					registraMsg("Categoria", "Categoria não encontrada.", "erro");
 				}
 			} 
@@ -1048,7 +1031,7 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 				categoriaDao.save(c);
 								
 				List<Categoria> categorias = categoriaDao.buscarCategorias();
-				model.addAttribute("categorias", categorias);
+				request.setAttribute("categorias", categorias);
 				registraMsg("Categoria", "Alterada com sucesso.", "info");
 			}
 			else if (alterar) {
@@ -1061,28 +1044,28 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 					registraMsg("Categoria", "Categoria não encontrada.", "erro");
 				}
 				List<Categoria> categorias = categoriaDao.buscarCategorias();
-				model.addAttribute("categorias", categorias);
+				request.setAttribute("categorias", categorias);
 				registraMsg("Categorias", "Salvo com sucesso.", "info");
 			}
 			
-			model.addAttribute("usuarioSessao", usuarioSessao);
+			request.setAttribute("usuarioSessao", usuarioSessao);
 		}
 		String link = "pages/categorias";
 		
-		ModelAndView modelAndView = new ModelAndView(link);
+		
 		atualizarPagina = "/categorias";
-		modelAndView.addObject("atualizarPagina", atualizarPagina);
-		enviaMsg(modelAndView);
-		return modelAndView; 
+		request.setAttribute("atualizarPagina", atualizarPagina);
+		enviaMsg(request);
+		request.getRequestDispatcher("/WEB-INF/jsp/"+link+".jsp").forward(request, response); 
 	}
 	
 	
 	
 	@RequestMapping(value = "/atualizarUsuario", method = {RequestMethod.POST,RequestMethod.GET}) // Link do submit do form e o method POST que botou la
-	public ModelAndView atualizarUsuario(HttpServletRequest request, HttpServletResponse response, Model model, Integer usuarioID, Boolean alterar, Boolean salvar, Boolean pesquisar, Usuario usuario) { // model é usado para mandar , e variavelNome está recebendo o name="nome" do submit feito na pagina principal 
+	public void atualizarUsuario(HttpServletRequest request, HttpServletResponse response,  Integer usuarioID, Boolean alterar, Boolean salvar, Boolean pesquisar, Usuario usuario) throws ServletException, IOException { // model é usado para mandar , e variavelNome está recebendo o name="nome" do submit feito na pagina principal 
 		String link = "pages/usuarios";
 		String atualizarPagina = "";
-		ModelAndView modelAndView = new ModelAndView(link);
+		
 		HttpSession session = request.getSession();
 		Usuario usuarioSessao = new Usuario();
 		if(session.getAttribute("usuarioSessao") != null) {
@@ -1092,10 +1075,10 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 			if(pesquisar) {
 				Usuario u = usuarioDao.findById(usuarioID).get();
 				if(u != null) {
-					model.addAttribute("usuario", u);
+					request.setAttribute("usuario", u);
 				} else {
 					List<Usuario> usuarios = usuarioDao.usuarios();
-					model.addAttribute("usuarios", usuarios);
+					request.setAttribute("usuarios", usuarios);
 					registraMsg("Usuário", "Usuário não encontrado.", "erro");
 				}
 			} 
@@ -1118,7 +1101,7 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 					registraMsg("Usuário", "Já existe usuário com este Login.", "erro");
 				}
 				List<Usuario> usuarios = usuarioDao.usuarios();
-				model.addAttribute("usuarios", usuarios);
+				request.setAttribute("usuarios", usuarios);
 				
 			}
 			else if (alterar) {
@@ -1140,17 +1123,17 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 					registraMsg("Usuário", "Já existe usuário com este Login.", "erro");
 				}
 				List<Usuario> usuarios = usuarioDao.usuarios();
-				model.addAttribute("usuarios", usuarios);
+				request.setAttribute("usuarios", usuarios);
 				registraMsg("Usuários", "Salvo com sucesso.", "info");
 			}
 			
-			model.addAttribute("usuarioSessao", usuarioSessao);
+			request.setAttribute("usuarioSessao", usuarioSessao);
 		}
 		
-		enviaMsg(modelAndView);
+		enviaMsg(request);
 		atualizarPagina = "/usuarios";
-		modelAndView.addObject("atualizarPagina", atualizarPagina);
-		return modelAndView; 
+		request.setAttribute("atualizarPagina", atualizarPagina);
+		request.getRequestDispatcher("/WEB-INF/jsp/"+link+".jsp").forward(request, response); 
 	}
 	
 	

@@ -34,7 +34,7 @@ function mensagemErro(titulo, corpo){
 	setTimeout(function() {
 	$('#alertaErro').fadeOut(500, function(){});
 	$(this).remove();
-	}, 2000);
+	}, 5000);
 }
 function mensagemProduto(titulo, corpo){
 	document.getElementById("alerta").style.display = "block";
