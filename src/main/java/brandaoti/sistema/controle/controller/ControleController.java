@@ -535,11 +535,9 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 	        String s = String.format("%.2f", d);
 	        s = s.replace(",", ".");
 	        
-	        if(session.getAttribute("itemMenuSelecionado") != null) {
-	        	itemMenuSelecionado = (String) session.getAttribute("itemMenuSelecionado");
-			}
-	        
 	        link = "pages/home";
+	        itemMenuSelecionado = "home";
+	        request.setAttribute("itemMenuSelecionado", itemMenuSelecionado);
 			request.setAttribute("totalinicio", s);
 			request.setAttribute("categorias", categorias);
 			request.setAttribute("pergunta", pergunta);
@@ -603,7 +601,7 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 					usuarioDao.save(usuarioSessao);
 					String corretaResp = "";
 					Pergunta pCorreta = perguntaDao.correta(questao,idQuestao);
-					registraMsg("RESPOSTA", "ERRADA!<br><br> <b>Resposta correta:</b><br><br> "+pCorreta.getCorreta()+" ", "erro");
+					registraMsg("RESPOSTA ERRADA", "<br><i>RESPOSTA CORRETA:</i><br> "+pCorreta.getCorreta()+" ", "erro");
 				} else {
 					//Acertou
 					Integer conta = usuarioSessao.getPontuacao() + 1;
@@ -765,6 +763,9 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 				}
 			}
 			
+			String itemMenuSelecionado = "jogar";
+	        request.setAttribute("itemMenuSelecionado", itemMenuSelecionado);
+	        
 			request.setAttribute("perg", questaoJogo.getQuestao());
 			request.setAttribute("idQuestao", questaoJogo.getIdquestao());
 			request.setAttribute("alt1", questaoJogo.getResposta1());
@@ -899,7 +900,8 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 		}
 		request.setAttribute("usuarioSessao", usuarioSessao);
 		String link = "pages/recordes";
-		
+		String itemMenuSelecionado = "recordes";
+        request.setAttribute("itemMenuSelecionado", itemMenuSelecionado);
 		
 		enviaMsg(request);
 		request.getRequestDispatcher("/WEB-INF/jsp/"+link+".jsp").forward(request, response); 
