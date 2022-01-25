@@ -332,12 +332,11 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 
 	
 	
-	@GetMapping(value = "/deslogar")
+	@RequestMapping(value = "/deslogar")
 	public void deslogar(HttpServletRequest request, HttpServletResponse response) throws IOException {  
-		String link = "/deslogar";
 		HttpSession session = request.getSession();
 		session.invalidate();
-		response.sendRedirect(link);
+		response.sendRedirect("/");
 	}
 	
 	

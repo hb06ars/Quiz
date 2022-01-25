@@ -46,7 +46,7 @@ function expandir(campo, quantidade){
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="generator" content="">
-    <title>Controle</title>
+    <title>QUIZ</title>
 
     <!-- manifest meta -->
     <meta name="apple-mobile-web-app-capable" content="yes">
