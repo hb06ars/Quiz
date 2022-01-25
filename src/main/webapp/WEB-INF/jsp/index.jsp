@@ -33,6 +33,8 @@
     <link href="/css/style.css" rel="stylesheet" id="style">
 </head>
 
+
+
 <body class="body-scroll d-flex flex-column h-100 menu-overlay" >
     <!-- screen loader -->
     
@@ -59,22 +61,22 @@
 
 <form action="/home" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
     <!-- Begin page content -->
-    <main class="flex-shrink-0 main has-footer">
+    <main style="background-position: center;background-repeat: no-repeat; background-image: url('/img/fundo_bkg.png'); background-color: white; " class="flex-shrink-0 main has-footer">
         <!-- Fixed navbar -->       
         	<div class="container h-100 text-white">
 	            <div class="row h-100">
 	                <div class="col-12 align-self-center mb-4">
 	                    <div class="row justify-content-center">
 	                        <div class="col-11 col-sm-7 col-md-6 col-lg-5 col-xl-4 text-center">
-	                            <h2 class="font-weight-normal mb-1">QUIZ</h2>
-	                            <h4 class="font-weight-normal mb-5">Perguntas e Respostas</h4>
+	                            <h2 class="font-weight-normal mb-1 text-dark">QUIZ</h2>
+	                            <h4 class="font-weight-normal mb-5 text-dark ">Perguntas e Respostas</h4>
 	                            <div class="form-group float-label">
-	                                <input type="text" name="usuarioVal" id="usuarioVal" class="form-control text-white" required>
-	                                <label class="form-control-label text-white">Nome de usuário</label>
+	                                <input type="text" name="usuarioVal" id="usuarioVal" class="form-control text-dark" required>
+	                                <label class="form-control-label text-dark">Nome de usuário</label>
 	                            </div>
 	                            <div class="form-group float-label position-relative">
-	                                <input type="password" name="senhaVal" class="form-control text-white" required>
-	                                <label class="form-control-label text-white">Senha</label>
+	                                <input type="password" name="senhaVal" class="form-control text-dark" required>
+	                                <label class="form-control-label text-dark">Senha</label>
 	                            </div>  
 	                        </div>
 	                    </div>
